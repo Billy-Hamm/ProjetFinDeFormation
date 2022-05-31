@@ -1,0 +1,353 @@
+unit logiqueEmploye;
+
+interface
+
+uses System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+FMX.Graphics, FMX.Objects, FMX.Ani,  FMX.Dialogs, FrEmployeTopElement, FrEmployeMaquette,
+FrEmploye, logiquePartager, FrFiltreElementInformation, FrFiltreElement;
+
+
+
+// Procédure générique
+procedure responsiveEmploye (route : string);
+function valideFiltreEmploye () : TtabFiltreSelect;
+procedure appaDispaFiltreEmploye ();
+procedure reinitialiserFiltreEmploye ();
+
+// Procédures création
+  //Création des employés
+procedure creeEnsembleElementsEmploye ();
+procedure creeEmployes ();
+procedure creeTopElement ();
+procedure creeElementEmploye ();
+  //Création de filtre
+procedure creationFiltreElement();
+procedure creationFiltreInformation ();
+
+
+
+//procédure ajout
+procedure ajouterEnsembleElementsEmploye ();
+procedure ajouterTopElement();
+procedure ajouterTousEmploye();
+procedure ajouterMargeEmploye ();
+procedure ajouterEmploye ();
+
+procedure ajoutFiltreInformation ();
+procedure ajoutFiltreElement ();
+
+//procédure retrait
+procedure retirerTopElement();
+procedure retirerTousElement ();
+procedure retirerEnsembleElementEmploye ();
+
+procedure detruireElementFiltre ();
+
+
+
+
+
+var
+  topEmploye : TemployeTopElemnt;
+  LesEmploye : array of TemployeMaquette;
+  UnEmploye : TemployeMaquette;
+  TousEmploye : Temploye;
+  nombreEmploye : Integer;
+  // Cette variable permet de faire à ce que le code sql ne soit pas exécté + une fois
+  debut : Boolean;
+  // Pour que la création des information de filtre ne s'exécute qu'une fois
+  exeFiltre : Boolean;
+  // pour exécuter une seule fois la procedure de responsive
+  verRes : Integer;
+  toggleFiltre : Boolean;
+  toggleFiltreElement : Boolean;
+
+  filtreElement : TfiltreElement;
+  filtreInformation : TfiltreElementInformation;
+  tabFiltreInformation : TtabFiltreType;
+
+
+implementation
+
+uses Principale, dmBasesDeDonnees;
+// Les procédures de création
+
+procedure creeElementEmploye ();
+begin
+   TousEmploye := Temploye.Create(Pprincipale);
+end;
+
+
+procedure creeTopElement ();
+begin
+   topEmploye := TemployeTopElemnt.Create(Pprincipale);
+end;
+
+// Initialisations
+procedure creeEnsembleElementsEmploye ();
+begin
+  debut := True;
+  verRes := 0;
+  exeFiltre := True;
+  toggleFiltreElement := False;
+  toggleFiltre := False;
+  creeTopElement ();
+  creeElementEmploye ();
+  creationFiltreElement();
+end;
+
+procedure creeEmployes ();
+ var
+  i : Integer;
+  reqSql1, reqSql2 : string;
+begin
+  i := 0;
+  nombreEmploye := 0;
+  reqSql1 := 'SELECT idEmploye, nomEmp, prenomEmp FROM Employe';
+  reqSql2 := 'SELECT count(*) FROM Employe';
+
+  requeteSql(reqSql2);
+   basesDeDonnees.FDQuery1.First;
+   while not basesDeDonnees.FDQuery1.Eof do
+    begin
+      nombreEmploye := basesDeDonnees.FDQuery1.Fields[0].AsInteger;
+      basesDeDonnees.FDQuery1.Next;
+    end;
+
+    SetLength(LesEmploye, nombreEmploye);
+
+
+   requeteSql (reqSql1);
+   // Début de la lecture du result de la base de données
+    basesDeDonnees.FDQuery1.First;
+    while not basesDeDonnees.FDQuery1.Eof do
+      begin
+        // Création de la frame puis renommer le name
+        UnEmploye := TemployeMaquette.Create(Pprincipale);
+        UnEmploye.Name := UnEmploye.Name + inttostr(i);
+
+        // Injection de données dans la Frame
+        UnEmploye.identifiant.Text := basesDeDonnees.FDQuery1.FieldByName('idEmploye').AsString;
+        UnEmploye.nomEmploye.Text := basesDeDonnees.FDQuery1.FieldByName('nomEmp').AsString + ' ' +
+        basesDeDonnees.FDQuery1.FieldByName('prenomEmp').AsString;
+
+        // Stocker les frame dans le tableau pour l'affichage
+        LesEmploye[i] := UnEmploye;
+        basesDeDonnees.FDQuery1.Next;
+        i := i + 1;
+      end;
+
+
+end;
+
+
+
+procedure creationFiltreElement();
+begin
+    filtreElement := TfiltreElement.Create(Pprincipale);
+end;
+
+{
+*************************************************
+*************************************************
+}
+
+procedure creationFiltreInformation ();
+var
+   informations : array [0..3] of string;
+   i : Integer;
+   tailleTab : Integer;
+begin
+    tailleTab := Length(informations);
+    informations [0] := 'sexeEmp';
+    informations [1] := 'dateNaissanceEmp';
+    informations [2] := 'Sit. Civil';
+    informations [3] := 'idEmploye';
+    SetLength(tabFiltreInformation, tailleTab);
+
+    for i := 0 to tailleTab-1 do
+        begin
+           filtreInformation := TfiltreElementInformation.Create(Pprincipale);
+           filtreInformation.Name := filtreInformation.Name + IntToStr(i);
+           filtreInformation.texteFiltre.Text := informations[i];
+           tabFiltreInformation[i] := filtreInformation;
+        end;
+end;
+
+// Les procédures d'ajout
+
+procedure ajoutFiltreInformation ();
+var
+   j : Integer;
+begin
+     creationFiltreInformation ();
+
+  for j:= 0 to Length(tabFiltreInformation)-1 do
+      begin
+        tabFiltreInformation[j].Parent := filtreElement.body;
+      end;
+end;
+
+procedure ajoutFiltreElement ();
+begin
+     if exeFiltre then
+        begin
+          ajoutFiltreInformation ();
+          exeFiltre := False;
+        end;
+  filtreElement.Parent := TousEmploye.filtreClick;
+end;
+
+{
+*************************************************
+*************************************************
+}
+
+procedure ajouterTousEmploye();
+  var
+    j : Integer;
+begin
+  creeEmployes ();
+  ajouterMargeEmploye ();
+
+  for j:= 0 to Length(LesEmploye)-1 do
+    begin
+      LesEmploye[j].Parent := TousEmploye.VertScrollBox1;
+    end;
+
+end;
+
+procedure ajouterEmploye ();
+
+begin
+
+  if debut then
+    begin
+      ajouterTousEmploye();
+      debut := False;
+    end;
+
+   TousEmploye.Parent := Pprincipale.prinContainer;
+   appaTousEmployes ();
+   TousEmployesAnim.Parent := TousEmploye;
+   TousEmployesAnim.Enabled := true;
+
+end;
+
+procedure ajouterTopElement();
+begin
+  topEmploye.Parent := Pprincipale.containeTopElement;
+  appaTopElementEmploye ();
+  TopElementEmployeAnim.Parent := topEmploye;
+  TopElementEmployeAnim.Enabled := true;
+
+end;
+
+procedure ajouterMargeEmploye ();
+begin
+  // La taille du conteneur des employés
+    TousEmploye.Height := TousEmploye.topListeEmploye.Height +
+    TousEmploye.titreListeEmploye.Height + (UnEmploye.Height * nombreEmploye);
+
+  // Taille de la verticalBox  du conteneur des employés
+    TousEmploye.VertScrollBox1.Height := UnEmploye.Height * nombreEmploye ;
+
+  // Taille du prinContainer
+    Pprincipale.prinContainer.Height := TousEmploye.Height ;
+end;
+
+
+procedure ajouterEnsembleElementsEmploye ();
+begin
+
+  ajouterTopElement();
+
+  ajouterEmploye ();
+
+  ajoutFiltreElement ();
+end;
+
+// Les procédures de retrait
+
+procedure retirerTopElement();
+begin
+  topEmploye.Parent := nil;
+end;
+
+procedure retirerTousElement ();
+begin
+  TousEmploye.Parent := nil;
+end;
+
+
+procedure retirerEnsembleElementEmploye ();
+begin
+  retirerTopElement();
+  retirerTousElement ();
+end;
+
+
+// Pour le responsive
+
+procedure responsiveEmploye (route : string);
+
+begin
+  if route = 'Employés' then
+    begin
+      if Pprincipale.Width < 782 then
+        begin
+          TousEmploye.VertScrollBox1.Anchors := [TAnchorKind.akLeft, TAnchorKind.akRight];
+          TousEmploye.Parent := Pprincipale;
+          TousEmploye.Position.Y := 322;
+        end;
+
+      if Pprincipale.Width >= 782 then
+        begin
+          TousEmploye.Parent := Pprincipale.prinContainer;
+        end;
+
+    end;
+
+
+end;
+
+// Filtre
+
+function valideFiltreEmploye () : TtabFiltreSelect;
+begin
+   Result := elementSect(tabFiltreInformation);
+end;
+
+procedure appaDispaFiltreEmploye ();
+begin
+  if toggleFiltre = False then
+begin
+ TousEmploye.filtreClick.Visible := True;
+ TousEmploye.appaFiltre.Enabled := True;
+ toggleFiltre := True;
+end
+else
+  begin
+    TousEmploye.filtreClick.Visible := False;
+    toggleFiltre := False;
+  end;
+end;
+
+
+procedure detruireElementFiltre ();
+begin
+   filtreElement.Free;
+end;
+
+procedure reinitialiserFiltreEmploye ();
+begin
+     detruireElementFiltre ();
+     creationFiltreElement();
+     Finalize(tabFiltreInformation);
+     ajoutFiltreInformation ();
+     ajoutFiltreElement ();
+     appaDispaFiltreEmploye ();
+end;
+
+end.
+

@@ -1,0 +1,36 @@
+unit FrEntierIntervalle;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
+  FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
+  FMX.Objects, FMX.ListBox, FMX.Controls.Presentation, FMX.Edit, FMX.Effects,
+  FMX.Layouts;
+
+type
+  TentierIntervalle = class(TFrame)
+    critere1: TEdit;
+    CBOperations: TComboBox;
+    RectCrit1: TRectangle;
+    lblIntervalle: TLabel;
+    containerIntervalle: TLayout;
+    Label1: TLabel;
+    RectCritStr: TRectangle;
+    critStr: TEdit;
+    Circle1: TCircle;
+    Label2: TLabel;
+    ShadowEffect1: TShadowEffect;
+    rectCrit2: TRectangle;
+    critere2: TEdit;
+  private
+    { Déclarations privées }
+  public
+    { Déclarations publiques }
+  end;
+
+implementation
+
+{$R *.fmx}
+
+end.

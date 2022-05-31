@@ -1,0 +1,102 @@
+object filtreElement: TfiltreElement
+  Align = Top
+  Size.Width = 160.000000000000000000
+  Size.Height = 184.000000000000000000
+  Size.PlatformDefault = False
+  object Layout2: TLayout
+    Position.X = -1.000000000000000000
+    Size.Width = 161.000000000000000000
+    Size.Height = 185.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object Rectangle2: TRectangle
+      Fill.Color = claWhite
+      Position.X = 119.000000000000000000
+      Position.Y = 2.000000000000000000
+      RotationAngle = 45.000000000000000000
+      Size.Width = 16.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object containe: TRectangle
+      Fill.Color = claWhite
+      Position.X = 8.000000000000000000
+      Position.Y = 14.000000000000000000
+      Size.Width = 152.000000000000000000
+      Size.Height = 163.000000000000000000
+      Size.PlatformDefault = False
+      XRadius = 5.000000000000000000
+      YRadius = 5.000000000000000000
+      object header: TLayout
+        Align = Top
+        Size.Width = 152.000000000000000000
+        Size.Height = 33.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        object Line1: TLine
+          LineType = Diagonal
+          Position.X = 8.000000000000000000
+          Position.Y = 28.000000000000000000
+          Size.Width = 136.000000000000000000
+          Size.Height = 1.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = xFF878787
+        end
+        object Rectangle3: TRectangle
+          Position.X = 115.000000000000000000
+          Position.Y = 7.000000000000000000
+          Size.Width = 25.000000000000000000
+          Size.Height = 17.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Thickness = 0.000000000000000000
+          XRadius = 3.000000000000000000
+          YRadius = 3.000000000000000000
+        end
+        object Rectangle4: TRectangle
+          Position.X = 87.000000000000000000
+          Position.Y = 7.000000000000000000
+          Size.Width = 25.000000000000000000
+          Size.Height = 17.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Thickness = 0.000000000000000000
+          XRadius = 3.000000000000000000
+          YRadius = 3.000000000000000000
+        end
+      end
+      object body: TVertScrollBox
+        Align = Client
+        Size.Width = 152.000000000000000000
+        Size.Height = 130.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 1
+        Viewport.Width = 152.000000000000000000
+        Viewport.Height = 130.000000000000000000
+        inline filtreElementInformation1: TfiltreElementInformation
+          Align = Top
+          Size.Width = 152.000000000000000000
+          Size.Height = 27.000000000000000000
+          Size.PlatformDefault = False
+          inherited filtreInformation: TRectangle
+            Size.Width = 150.000000000000000000
+            inherited Label4: TLabel
+              TextSettings.Font.StyleExt = {00070000000000000002000000}
+            end
+          end
+        end
+        inline filtreElementInformation2: TfiltreElementInformation
+          Align = Top
+          Position.Y = 27.000000000000000000
+          Size.Width = 152.000000000000000000
+          Size.Height = 27.000000000000000000
+          Size.PlatformDefault = False
+          inherited filtreInformation: TRectangle
+            Size.Width = 150.000000000000000000
+            inherited Label4: TLabel
+              TextSettings.Font.StyleExt = {00070000000000000002000000}
+            end
+          end
+        end
+      end
+    end
+  end
+end

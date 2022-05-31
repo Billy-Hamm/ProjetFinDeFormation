@@ -1,0 +1,212 @@
+unit logiqueFiltreEmploye;
+
+interface
+
+uses System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+FMX.Graphics, FMX.Objects, FMX.Ani, FMX.StdCtrls, FMX.Dialogs, System.Generics.Collections,
+FrElementListCrit,FrEntierIntervalle, FrRechMC;
+
+// L'ensemble des types
+type
+    postionEdit = array [0..1] of Single;
+
+    FiltreEmploye = class (TRechMC)
+     procedure tableauInformationCritere ();
+     private
+     public
+    end;
+
+    Critere = Class (TelementlisteCrit)
+     private
+       procedure clicSurCritere (Sender : TObject);
+     public
+
+    End;
+
+    EntiersValeurs = Class (TentierIntervalle)
+      private
+      procedure detruireElement(Sender : TObject);
+      public
+    End;
+
+
+
+// Toutes les procédures de classes
+
+{ @ComposantProprio c'es le composant propriétaire que l'on va passer en paramètre
+lorsqu'on va appeler cette procedure. }
+procedure creationConteneurFilter (ComposantProprio : TComponent);
+procedure creationCritere ();
+
+{ Recupère le texte qui se trouve sur le bouton sur lequel on a cliqué }
+function donnerTextBoutonCliquer( bouton : TRectangle ) : String;
+
+{ On crée la frame qui va permttre de mettre élément de recherche. }
+procedure  creerEntierValeur (texte : string);
+{ @tabPosition est un tableau qui aura une taille de deux, la position 0 sera la
+l'affichage des edits de entier et la position 1 sera l'affichage des valeurString  }
+procedure entierValeur(nomCrit : string; tabPosition : postionEdit);
+
+
+
+// Toutes les variables
+var
+   { Permet de toujours distinguer les names des éléments de saisi }
+   incChampSaisi : integer;
+   { c'est le FrRechMC }
+   conteneurFiltre : FiltreEmploye;
+   { c'est le FrElementlisteCrit. Dans ce frame on trouve aussi la frame ValeurCritere }
+   ElementCritere : Critere;
+   { Ce tableau va concatener les éléments de intervalleCritere (les 2 edits) et
+   et les élément de valeurCritere }
+   tabEnsembleCritere : array of string;
+   { tableau contenant uniquement les éléments de IntervalleCritere et ValeurCritere }
+   tabEntier, tabValeur : array of string;
+   { tableau contenant tous les éléments de FrElementListCrit }
+   tabElementCritere : array of Critere;
+
+
+   { Note : Je crée tabEnsembleCritere, tabEntier et tabValeur pour pouvoir distinguer
+   le nombre d'edit que je vais faire sortir, par exemple s'il faut chercher un poste,
+   je ne suis pas obligé de sorter deux edits, un seul suffira pour.
+   - Alors ce que je fais, dans une procedure que je vais créer, je passerai
+   un element du tableau tabEnsembleCritere et si ce dernier se trouve dans un des
+   tableaux la génération des edits se fera en fonction. }
+
+implementation
+
+procedure creationConteneurFilter (ComposantProprio : TComponent);
+begin
+  conteneurFiltre := FiltreEmploye.Create(ComposantProprio);
+end;
+
+procedure FiltreEmploye.tableauInformationCritere();
+var
+   tailleTotal, i, j : integer;
+begin
+     j := 0;
+// Initilisation des tableaux
+  SetLength(tabEntier, 3);
+  SetLength(tabValeur, 3);
+  tailleTotal := Length(tabEntier) + Length(tabValeur);
+  SetLength(tabEnsembleCritere, tailleTotal);
+
+  tabEntier[0] := 'Salaire';
+  tabEntier[1] := 'Ancienité';
+  tabEntier[2] := 'DDN';
+
+  tabValeur[0] := 'Poste';
+  tabValeur[1] := 'T. Contrat';
+  tabValeur[2] := 'Sexe';
+
+  for i := 0 to Length(tabEnsembleCritere)-1 do
+    begin
+      if i <= Length(tabEntier)-1 then
+        begin
+          tabEnsembleCritere[i] := tabEntier[i];
+        end
+        else
+          begin
+            tabEnsembleCritere[i] := tabValeur[j];
+            j := j + 1;
+          end;
+    end;
+
+end;
+
+procedure creationCritere ();
+var
+   i : integer;
+begin
+ SetLength(tabElementCritere, Length(tabEnsembleCritere));
+  For i := 0 to Length(tabEnsembleCritere)-1 do
+    begin
+      ElementCritere := Critere.Create(conteneurFiltre);
+      ElementCritere.Name := ElementCritere.Name + IntToStr(i);
+      ElementCritere.nomCritere.Text := tabEnsembleCritere[i];
+      ElementCritere.rectElementCrit.OnClick := ElementCritere.clicSurCritere;
+      tabElementCritere[i] := ElementCritere;
+    end;
+    // Il doit y avoir une fontion d'ajout des éléments de critère ici
+
+end;
+
+
+procedure Critere.clicSurCritere(Sender: TObject);
+begin
+     creerEntierValeur( donnerTextBoutonCliquer( Sender as TRectangle ) );
+end;
+
+
+function donnerTextBoutonCliquer( bouton : TRectangle ) : String;
+var i : integer;
+begin
+  for i := 0 to (bouton.Controls.Count)-1 do
+      if bouton.Controls[i] is TLabel then
+         Result := (bouton.Controls[i] as TLabel).Text;
+end;
+
+
+procedure  creerEntierValeur (texte : string);
+var i : integer;
+begin
+
+      for i := 0 to Length(tabEnsembleCritere)-1 do
+        begin
+          if i <= Length(tabEntier)-1 then
+            begin
+              if tabEntier[i] = texte then
+                begin
+                  // On va avoir notre fonction de création ici
+                  entierValeur( texte, [147 , 421] );
+                  break;
+                end;
+            end
+            else
+              begin
+                entierValeur( texte, [421 , 147] );
+                Break;
+              end;
+        end;
+
+end;
+
+
+procedure entierValeur(nomCrit : string; tabPosition : postionEdit);
+var
+   elementSaisi : EntiersValeurs;
+begin
+     incChampSaisi := incChampSaisi + 1;
+     elementSaisi := EntiersValeurs.Create(conteneurFiltre);
+     elementSaisi.Name := elementSaisi.Name + IntToStr(incChampSaisi);
+
+     with elementSaisi do
+      begin
+        libelleCritere.Text := nomCrit;
+        containerIntervalle.Position.X := tabPosition[0];
+        RectCritStr.Position.X := tabPosition[1];
+        btnDestroy.OnClick :=  detruireElement;
+        Parent := conteneurFiltre.conteneurElementCritere;
+      end;
+
+
+end;
+
+
+procedure EntiersValeurs.detruireElement(Sender: TObject);
+var
+   nameParent : string;
+   i : integer;
+begin
+  nameParent := (Sender as TCircle).GetParentComponent.Name;
+  for i := 0 to conteneurFiltre.conteneurCritereElement.Controls.Count - 1 do
+    begin
+      if conteneurFiltre.conteneurCritereElement.Controls[i].Name = nameParent then
+        begin
+           conteneurFiltre.conteneurCritereElement.Controls[i].Destroy;
+        end;
+    end;
+end;
+
+
+end.

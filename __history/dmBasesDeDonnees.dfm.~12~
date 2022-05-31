@@ -1,0 +1,35 @@
+object basesDeDonnees: TbasesDeDonnees
+  OldCreateOrder = False
+  Height = 269
+  Width = 517
+  object ADOConnection1: TADOConnection
+    LoginPrompt = False
+    Left = 16
+    Top = 8
+  end
+  object ADOQuery1: TADOQuery
+    Parameters = <>
+    Left = 91
+    Top = 8
+  end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=D:\Travail\Delphi\ProjetBB2\baseDeDonnees\symp.db'
+      'DriverID=SQLite')
+    LoginPrompt = False
+    Transaction = FDTransaction1
+    Left = 32
+    Top = 192
+  end
+  object FDTransaction1: TFDTransaction
+    Connection = FDConnection1
+    Left = 120
+    Top = 192
+  end
+  object FDQuery1: TFDQuery
+    Connection = FDConnection1
+    Transaction = FDTransaction1
+    Left = 189
+    Top = 192
+  end
+end

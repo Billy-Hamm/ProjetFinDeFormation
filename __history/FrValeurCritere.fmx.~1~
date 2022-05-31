@@ -1,0 +1,29 @@
+object ValeurCritere: TValeurCritere
+  Size.Width = 233.000000000000000000
+  Size.Height = 37.000000000000000000
+  Size.PlatformDefault = False
+  object RectCrit2: TRectangle
+    Position.X = 4.000000000000000000
+    Position.Y = 5.000000000000000000
+    Size.Width = 225.000000000000000000
+    Size.Height = 27.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Thickness = 0.500000000000000000
+    XRadius = 5.000000000000000000
+    YRadius = 5.000000000000000000
+    object critere2: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Client
+      StyleLookup = 'editstyle'
+      TabOrder = 0
+      Opacity = 0.500000000000000000
+      Margins.Left = 1.000000000000000000
+      Margins.Top = 1.000000000000000000
+      Margins.Right = 1.000000000000000000
+      Margins.Bottom = 1.000000000000000000
+      Size.Width = 223.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+    end
+  end
+end

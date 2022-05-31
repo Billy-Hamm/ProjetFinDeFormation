@@ -1,0 +1,269 @@
+unit logiqueConge;
+
+interface
+uses System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+FMX.Graphics, FMX.Objects, FMX.Dialogs, logiquePartager, FrEmployeMaquetteConge,
+FrConge, FrCongeTopElement, logiqueFiltre;
+
+// les types
+type
+    Conges = class (Tconge)
+      private
+       procedure appaFiltre (Sender : TObject);
+      public
+    end;
+
+    // @table : array of string
+    dataFiltre = class (TObject)
+     procedure concevoirData ();
+     procedure creerDataFiltre ();
+      private
+       tableEmploye : table;
+       tabPvInst : table;
+       tabEval : table;
+       tabContrat : table;
+      public
+    end;
+
+// Procédure générique
+
+
+// Procédures création
+  //Procédure d'initialisation
+  procedure initialisationConge ();
+procedure creeTopElementConge ();
+procedure creeEmployeConges ();
+procedure creeElementConge ();
+procedure creeEnsembleElementsConge ();
+procedure recupererDonneesConge ();
+
+// Procédure d'ajout
+procedure ajouterTopElementConge ();
+procedure ajouterEnsembleElementsEmployeConge ();
+procedure ajouterTousEmployeConge ();
+procedure ajouterMargeEmployeConge ();
+procedure ajouterEmployeConge ();
+
+// Procédure de retrait
+procedure retirerTopElementConge ();
+procedure retirerTousElementEmployeConge ();
+procedure retirerEnsembleElementEmployeConge ();
+
+var
+  topConge       : TcongeTopElement;
+  UnEmployeConge      : TemployeMaquetteConge;
+  LesEmployeConge     : array of TemployeMaquetteConge;
+  elemenetPersonneConge : array of string;
+  TousEmployeConge    : Conges;
+  nombreEmployeConge  : Integer;
+  // Cette variable permet de faire à ce que le code sql ne soit pas exécté + une fois
+  sentinelleConge : Boolean;
+  toogleFiltreElement : Boolean;
+
+  infoFiltre : dataFiltre;
+
+implementation
+
+uses Principale, dmBasesDeDonnees;
+
+
+ // Procédure de création
+procedure initialisationConge ();
+begin
+  sentinelleConge := True;
+end;
+
+
+
+
+
+procedure creeEnsembleElementsConge ();
+begin
+   creeTopElementConge ();
+   creeElementConge ();
+end;
+
+procedure creeTopElementConge ();
+begin
+  topConge := TcongeTopElement.Create(Pprincipale);
+end;
+
+procedure creeElementConge ();
+begin
+  TousEmployeConge := Conges.Create(Pprincipale);
+  creationConteneurFilter(TousEmployeConge);
+  conteneurFiltre.Parent := TousEmployeConge.conteneurFiltre;
+  TousEmployeConge.Image1.OnClick := TousEmployeConge.appaFiltre;
+end;
+
+procedure Conges.appaFiltre(Sender: TObject);
+begin
+  if toogleFiltreElement = False then
+    begin
+      TousEmployeConge.appaConteneurFiltre.Enabled := True;
+      toogleFiltreElement := True;
+    end
+    else
+     begin
+       TousEmployeConge.dispConteneurFiltre.Enabled := True;
+       toogleFiltreElement := False;
+     end;
+end;
+
+
+procedure recupererDonneesConge ();
+ var
+  j : Integer;
+  reqSql1, reqSql2 : string;
+begin
+  j := 0;
+  nombreEmployeConge := 0;
+  reqSql1 := 'SELECT nomEmp, prenomEmp FROM Employe';
+  reqSql2 := 'SELECT count(*) FROM Employe';
+
+  requeteSql(reqSql2);
+   basesDeDonnees.FDQuery1.First;
+   while not basesDeDonnees.FDQuery1.Eof do
+    begin
+      nombreEmployeConge := basesDeDonnees.FDQuery1.Fields[0].AsInteger;
+      basesDeDonnees.FDQuery1.Next;
+    end;
+
+
+    // Le 2 représenter le nombre d'information à récupérer pour un employé
+    SetLength(elemenetPersonneConge, nombreEmployeConge * 2);
+
+
+   requeteSql (reqSql1);
+    basesDeDonnees.FDQuery1.First;
+    while not basesDeDonnees.FDQuery1.Eof do
+      begin
+        elemenetPersonneConge[j] := basesDeDonnees.FDQuery1.FieldByName('nomEmp').AsString;
+        j := j + 1;
+        elemenetPersonneConge[j] := basesDeDonnees.FDQuery1.FieldByName('prenomEmp').AsString;
+        j := j + 1;
+        basesDeDonnees.FDQuery1.Next;
+      end;
+
+end;
+
+
+procedure creeEmployeConges ();
+var
+   i,k : SmallInt;
+begin
+k := 0;
+
+   if sentinelleConge = true then
+    begin
+      recupererDonneesConge ();
+      sentinelleConge := False;
+    end;
+
+    SetLength(LesEmployeConge, nombreEmployeConge);
+    for  i := 0 to nombreEmployeConge-1 do
+         begin
+
+
+            // Création de la frame puis renommer le name
+            UnEmployeConge := TemployeMaquetteConge.Create(Pprincipale);
+            UnEmployeConge.Name := UnEmployeConge.Name + inttostr(i);
+            // Injection de données dans la Frame
+            UnEmployeConge.nomEmploye.Text := elemenetPersonneConge[k] + ' ' +
+            elemenetPersonneConge[k+1];
+            // 2 représente le nombre d'informations à prendre (nom et prenom)
+            k := k + 2;
+            // Stocker les frame dans le tableau pour l'affichage
+            LesEmployeConge[i] := UnEmployeConge;
+         end;
+end;
+
+
+
+// Procédure d'ajout
+
+procedure ajouterEnsembleElementsEmployeConge ();
+begin
+
+  creeEnsembleElementsConge ();
+  ajouterTopElementConge ();
+  ajouterEmployeConge ();
+end;
+
+
+procedure ajouterTopElementConge ();
+begin
+  topConge.Parent := Pprincipale.containeTopElement;
+  appaTopElementConge ();
+  TopElementCongeAnim.Parent := topConge;
+  TopElementCongeAnim.Enabled := true;
+end;
+
+
+
+procedure ajouterTousEmployeConge ();
+  var
+    j : Integer;
+begin
+  creeEmployeConges ();
+  ajouterMargeEmployeConge ();
+
+  for j:= 0 to Length(LesEmployeConge)-1 do
+    begin
+      LesEmployeConge[j].Parent := TousEmployeConge.VertScrollBox1;
+    end;
+
+end;
+
+
+procedure ajouterEmployeConge ();
+begin
+      ajouterTousEmployeConge();
+
+
+   TousEmployeConge.Parent := Pprincipale.prinContainer;
+   appaTousEmployesConge();
+   TousEmployeCongeAnim.Parent := TousEmployeConge;
+   TousEmployeCongeAnim.Enabled := True;
+
+end;
+
+
+procedure ajouterMargeEmployeConge ();
+begin
+  // La taille du conteneur des employés
+    TousEmployeConge.Height := TousEmployeConge.topListeEmploye.Height +
+    TousEmployeConge.titreListeEmploye.Height + (UnEmployeConge.Height * nombreEmployeConge);
+
+  // Taille de la verticalBox  du conteneur des employés
+    TousEmployeConge.VertScrollBox1.Height := UnEmployeConge.Height * nombreEmployeConge ;
+
+  // Taille du prinContainer
+    Pprincipale.prinContainer.Height := TousEmployeConge.Height ;
+end;
+
+
+// Procédure de retrait
+
+procedure retirerTopElementConge ();
+begin
+  topConge.Destroy;
+end;
+
+procedure retirerTousElementEmployeConge ();
+begin
+  TousEmployeConge.Destroy;
+end;
+
+procedure retirerEnsembleElementEmployeConge ();
+begin
+   retirerTopElementConge ();
+   retirerTousElementEmployeConge ();
+   Finalize(LesEmployeConge);
+end;
+
+
+
+
+
+end.

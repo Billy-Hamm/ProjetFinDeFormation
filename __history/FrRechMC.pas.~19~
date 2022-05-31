@@ -1,0 +1,57 @@
+unit FrRechMC;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
+  FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
+  FMX.Layouts, FMX.Objects, FMX.Controls.Presentation, FMX.Edit,
+  FrEntierIntervalle, FMX.Ani;
+
+type
+{ On va créer un type de Element critère pour qu'il puisse hériter de toutes les propriété
+et attribut de Element critère et aussi on avoir d'autre que ce dernier n'a pas }
+  TRechMC = class(TFrame)
+    headerRech: TLayout;
+    bgc: TRectangle;
+    btnCritere: TRectangle;
+    Label1: TLabel;
+    Rectangle1: TRectangle;
+    Label3: TLabel;
+    Label4: TLabel;
+    conteneurCritereElement: TLayout;
+    conteneurElementCritere: TVertScrollBox;
+    conteneurCritere: TVertScrollBox;
+    appaHauteur: TFloatAnimation;
+    dispHauteur: TFloatAnimation;
+  private
+    { Déclarations privées }
+  public
+    { Déclarations publiques }
+  end;
+
+  // Les procedures
+
+  { On va dynamiser cette procedure en lui donner comme paramètre un tableau qui va lui
+  permettre d'avoir les élément de critère selon la page dans laquelle nous sommes }
+  procedure creationElementCritere ();
+
+  // Les variables
+  var
+    tabElementCritere : array [0..5] of string;
+
+implementation
+
+{$R *.fmx}
+
+procedure creationElementCritere ();
+begin
+  tabElementCritere [0] := 'Poste';
+  tabElementCritere [1] := 'Salaire';
+  tabElementCritere [2] := 'Ancieneté';
+  tabElementCritere [3] := 'T. Contrat';
+  tabElementCritere [4] := 'DDN';
+  tabElementCritere [5] := 'Sexe';
+end;
+
+end.

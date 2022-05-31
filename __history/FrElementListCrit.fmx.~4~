@@ -1,0 +1,25 @@
+object elementlisteCrit: TelementlisteCrit
+  Size.Width = 143.000000000000000000
+  Size.Height = 34.000000000000000000
+  Size.PlatformDefault = False
+  object Rectangle1: TRectangle
+    Align = Client
+    Fill.Color = claCornsilk
+    Size.Width = 143.000000000000000000
+    Size.Height = 34.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Thickness = 0.000000000000000000
+    object Label1: TLabel
+      Align = Client
+      StyledSettings = [Style, FontColor]
+      Margins.Left = 3.000000000000000000
+      Size.Width = 140.000000000000000000
+      Size.Height = 34.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 14.000000000000000000
+      Text = 'Critere'
+      TabOrder = 0
+    end
+  end
+end

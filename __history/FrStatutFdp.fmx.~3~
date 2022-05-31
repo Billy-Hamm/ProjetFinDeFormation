@@ -1,0 +1,30 @@
+object Frame2: TFrame2
+  Size.Width = 50.000000000000000000
+  Size.Height = 80.000000000000000000
+  Size.PlatformDefault = False
+  object presence: TRectangle
+    Align = Top
+    Size.Width = 50.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Thickness = 0.000000000000000000
+  end
+  object nonPresence: TRectangle
+    Align = Top
+    Position.Y = 54.000000000000000000
+    Size.Width = 50.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Thickness = 0.000000000000000000
+  end
+  object absence: TRectangle
+    Align = Top
+    Margins.Top = 2.000000000000000000
+    Margins.Bottom = 2.000000000000000000
+    Position.Y = 27.000000000000000000
+    Size.Width = 50.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Thickness = 0.000000000000000000
+  end
+end

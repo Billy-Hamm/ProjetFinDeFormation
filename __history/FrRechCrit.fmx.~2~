@@ -1,0 +1,29 @@
+object RechCrit: TRechCrit
+  Size.Width = 465.000000000000000000
+  Size.Height = 194.000000000000000000
+  Size.PlatformDefault = False
+  object FlowLayout1: TFlowLayout
+    Align = Top
+    Size.Width = 465.000000000000000000
+    Size.Height = 37.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Justify = Left
+    JustifyLastLine = Left
+    FlowDirection = LeftToRight
+    inline input1: Tinput
+      Margins.Left = 5.000000000000000000
+      Margins.Right = 5.000000000000000000
+      Position.X = 5.000000000000000000
+      Size.Width = 154.000000000000000000
+      Size.Height = 37.000000000000000000
+      Size.PlatformDefault = False
+      inherited textes: TLabel
+        TextSettings.Font.StyleExt = {00050000000000000004000000}
+      end
+      inherited Edit1: TEdit
+        TextSettings.Font.StyleExt = {00050000000000000004000000}
+      end
+    end
+  end
+end

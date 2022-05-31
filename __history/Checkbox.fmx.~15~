@@ -1,0 +1,90 @@
+object FrCheckbox: TFrCheckbox
+  Size.Width = 413.000000000000000000
+  Size.Height = 302.000000000000000000
+  Size.PlatformDefault = False
+  object Layout1: TLayout
+    Align = Left
+    Size.Width = 201.000000000000000000
+    Size.Height = 302.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object CheckBox1: TCheckBox
+      Position.X = 96.000000000000000000
+      Position.Y = 55.000000000000000000
+      TabOrder = 0
+      Text = 'CheckBox1'
+      OnChange = CheckBox1Change
+    end
+    object CheckBox2: TCheckBox
+      Position.X = 96.000000000000000000
+      Position.Y = 91.000000000000000000
+      TabOrder = 1
+      Text = 'CheckBox2'
+      OnChange = CheckBox2Change
+    end
+    object CheckBox3: TCheckBox
+      Position.X = 96.000000000000000000
+      Position.Y = 128.000000000000000000
+      TabOrder = 2
+      Text = 'CheckBox3'
+      OnChange = CheckBox3Change
+    end
+    object CheckBox4: TCheckBox
+      Position.X = 96.000000000000000000
+      Position.Y = 165.000000000000000000
+      TabOrder = 3
+      Text = 'CheckBox4'
+      OnChange = CheckBox4Change
+    end
+    object CheckBox5: TCheckBox
+      Position.X = 96.000000000000000000
+      Position.Y = 202.000000000000000000
+      TabOrder = 4
+      Text = 'CheckBox5'
+      OnChange = CheckBox5Change
+    end
+    object CheckBox6: TCheckBox
+      Position.X = 96.000000000000000000
+      Position.Y = 239.000000000000000000
+      TabOrder = 5
+      Text = 'CheckBox6'
+      OnChange = CheckBox6Change
+    end
+  end
+  object GroupBox1: TGroupBox
+    StyledSettings = [Family, Size, Style, Other]
+    Position.X = 208.000000000000000000
+    Size.Width = 205.000000000000000000
+    Size.Height = 161.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'Sans Code et faisable sans le GroupBox'
+    TabOrder = 1
+    object RadioButton5: TRadioButton
+      Position.X = 29.000000000000000000
+      Position.Y = 38.000000000000000000
+      TabOrder = 1
+      Text = 'RadioButton1'
+    end
+    object RadioButton6: TRadioButton
+      Position.X = 29.000000000000000000
+      Position.Y = 66.000000000000000000
+      TabOrder = 2
+      Text = 'RadioButton2'
+    end
+    object RadioButton7: TRadioButton
+      Position.X = 29.000000000000000000
+      Position.Y = 94.000000000000000000
+      TabOrder = 3
+      Text = 'RadioButton1'
+    end
+    object RadioButton8: TRadioButton
+      Position.X = 29.000000000000000000
+      Position.Y = 123.000000000000000000
+      Size.Width = 120.000000000000000000
+      Size.Height = 14.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 4
+      Text = 'RadioButton2'
+    end
+  end
+end

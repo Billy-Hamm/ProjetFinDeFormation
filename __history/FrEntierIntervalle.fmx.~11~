@@ -1,0 +1,163 @@
+object entierIntervalle: TentierIntervalle
+  Align = Top
+  ClipChildren = True
+  Size.Width = 416.000000000000000000
+  Size.Height = 37.000000000000000000
+  Size.PlatformDefault = False
+  object containerIntervalle: TLayout
+    Position.X = 147.000000000000000000
+    Size.Width = 233.000000000000000000
+    Size.Height = 37.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object CBOperations: TComboBox
+      Items.Strings = (
+        '..'
+        '='
+        '>='
+        '<='
+        '>'
+        '<'
+        '][')
+      Position.X = 8.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 41.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'comboboxstyle'
+      TabOrder = 0
+    end
+    object lblIntervalle: TLabel
+      StyledSettings = [Style, FontColor]
+      Position.X = 128.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 25.000000000000000000
+      Size.Height = 20.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 20.000000000000000000
+      TextSettings.HorzAlign = Center
+      Text = '..'
+      TabOrder = 1
+    end
+    object RectCrit1: TRectangle
+      Position.X = 56.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 73.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Thickness = 0.500000000000000000
+      XRadius = 5.000000000000000000
+      YRadius = 5.000000000000000000
+      object critere1: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Client
+        StyleLookup = 'editstyle'
+        TabOrder = 0
+        TextSettings.Font.Family = 'Roboto'
+        TextSettings.Font.Size = 14.000000000000000000
+        TextSettings.HorzAlign = Center
+        Opacity = 0.500000000000000000
+        Margins.Left = 1.000000000000000000
+        Margins.Top = 1.000000000000000000
+        Margins.Right = 1.000000000000000000
+        Margins.Bottom = 1.000000000000000000
+        Size.Width = 71.000000000000000000
+        Size.Height = 20.000000000000000000
+        Size.PlatformDefault = False
+        StyledSettings = [Style, FontColor]
+      end
+    end
+    object RectCrit2: TRectangle
+      Position.X = 152.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 73.000000000000000000
+      Size.Height = 22.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Thickness = 0.500000000000000000
+      XRadius = 5.000000000000000000
+      YRadius = 5.000000000000000000
+      object critere2: TEdit
+        Touch.InteractiveGestures = [LongTap, DoubleTap]
+        Align = Client
+        StyleLookup = 'editstyle'
+        TabOrder = 0
+        Opacity = 0.500000000000000000
+        Margins.Left = 1.000000000000000000
+        Margins.Top = 1.000000000000000000
+        Margins.Right = 1.000000000000000000
+        Margins.Bottom = 1.000000000000000000
+        Size.Width = 71.000000000000000000
+        Size.Height = 20.000000000000000000
+        Size.PlatformDefault = False
+      end
+    end
+  end
+  object Label1: TLabel
+    Align = Left
+    StyledSettings = [FontColor]
+    Margins.Left = 3.000000000000000000
+    Position.X = 3.000000000000000000
+    Size.Width = 137.000000000000000000
+    Size.Height = 37.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Family = 'Roboto'
+    TextSettings.Font.Size = 14.000000000000000000
+    TextSettings.Font.StyleExt = {00050000000000000004000000}
+    Text = 'date de naissance'
+    TabOrder = 2
+  end
+  object RectCritStr: TRectangle
+    Position.X = 421.000000000000000000
+    Position.Y = 5.000000000000000000
+    Size.Width = 225.000000000000000000
+    Size.Height = 27.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Thickness = 0.500000000000000000
+    XRadius = 5.000000000000000000
+    YRadius = 5.000000000000000000
+    object critStr: TEdit
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      Align = Client
+      StyleLookup = 'editstyle'
+      TabOrder = 0
+      Opacity = 0.500000000000000000
+      Margins.Left = 1.000000000000000000
+      Margins.Top = 1.000000000000000000
+      Margins.Right = 1.000000000000000000
+      Margins.Bottom = 1.000000000000000000
+      Size.Width = 223.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+    end
+  end
+  object Circle1: TCircle
+    Fill.Color = claWhite
+    Position.X = 387.000000000000000000
+    Position.Y = 4.000000000000000000
+    Size.Width = 22.000000000000000000
+    Size.Height = 22.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Thickness = 0.000000000000000000
+    object Label2: TLabel
+      StyledSettings = []
+      Position.X = 1.000000000000000000
+      Position.Y = 1.000000000000000000
+      Size.Width = 20.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 18.000000000000000000
+      TextSettings.Font.StyleExt = {00050000000000000004000000}
+      TextSettings.FontColor = claRed
+      TextSettings.HorzAlign = Center
+      Text = 'x'
+      TabOrder = 0
+    end
+    object ShadowEffect1: TShadowEffect
+      Softness = 0.300000011920929000
+      Opacity = 0.100000001490116100
+      ShadowColor = claBlack
+    end
+  end
+end

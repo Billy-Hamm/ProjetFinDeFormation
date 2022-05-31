@@ -1,0 +1,55 @@
+object input: Tinput
+  Size.Width = 159.000000000000000000
+  Size.Height = 33.000000000000000000
+  Size.PlatformDefault = False
+  object Edit1: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Align = Contents
+    StyleLookup = 'transparentedit'
+    TabOrder = 13
+    TextSettings.Font.Family = 'Roboto'
+    TextSettings.Font.Size = 14.000000000000000000
+    Size.Width = 159.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    StyledSettings = [Style, FontColor]
+    OnClick = Edit1Click
+    OnExit = Edit1Exit
+  end
+  object Label1: TLabel
+    Align = Bottom
+    StyledSettings = []
+    Margins.Bottom = 5.000000000000000000
+    Position.Y = 10.000000000000000000
+    Size.Width = 159.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    TextSettings.Font.Family = 'Roboto'
+    TextSettings.Font.Size = 14.000000000000000000
+    TextSettings.VertAlign = Trailing
+    Text = 'Employ'#233
+    TabOrder = 14
+    object AnimIn: TFloatAnimation
+      Duration = 0.200000002980232200
+      PropertyName = 'Position.Y'
+      StartValue = 0.000000000000000000
+      StartFromCurrent = True
+      StopValue = -10.000000000000000000
+    end
+    object AnimInverse: TFloatAnimation
+      Duration = 0.200000002980232200
+      PropertyName = 'Position.Y'
+      StartValue = 0.000000000000000000
+      StopValue = 10.000000000000000000
+    end
+  end
+  object Line1: TLine
+    Align = Bottom
+    LineType = Bottom
+    Margins.Right = 7.000000000000000000
+    Position.Y = 32.000000000000000000
+    Size.Width = 152.000000000000000000
+    Size.Height = 1.000000000000000000
+    Size.PlatformDefault = False
+  end
+end

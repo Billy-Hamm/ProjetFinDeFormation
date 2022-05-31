@@ -1,0 +1,41 @@
+object filtreElementInformation: TfiltreElementInformation
+  Align = Top
+  Size.Width = 150.000000000000000000
+  Size.Height = 27.000000000000000000
+  Size.PlatformDefault = False
+  object filtreInformation: TRectangle
+    Align = Top
+    Fill.Color = claWhite
+    Margins.Left = 1.000000000000000000
+    Margins.Right = 1.000000000000000000
+    Position.X = 1.000000000000000000
+    Size.Width = 148.000000000000000000
+    Size.Height = 25.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Thickness = 0.000000000000000000
+    OnClick = filtreInformationClick
+    object Label1: TLabel
+      Align = Left
+      StyledSettings = [FontColor]
+      Margins.Left = 5.000000000000000000
+      Position.X = 5.000000000000000000
+      Size.Width = 120.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 13.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000000000002000000}
+      Text = 'Les d'#233'missions'
+      TabOrder = 0
+    end
+    object colorAnim: TColorAnimation
+      Duration = 0.200000002980232200
+      OnFinish = colorAnimFinish
+      PropertyName = 'Fill.Color'
+      StartValue = claWhite
+      StopValue = xFFE0E0E0
+      Trigger = 'IsMouseOver=true'
+      TriggerInverse = 'IsMouseOver=false'
+    end
+  end
+end

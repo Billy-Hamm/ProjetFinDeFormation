@@ -1,0 +1,12 @@
+object PopUpRech: TPopUpRech
+  Size.Width = 436.000000000000000000
+  Size.Height = 200.000000000000000000
+  Size.PlatformDefault = False
+  object Rectangle1: TRectangle
+    Align = Client
+    Size.Width = 436.000000000000000000
+    Size.Height = 200.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Thickness = 0.000000000000000000
+  end
+end

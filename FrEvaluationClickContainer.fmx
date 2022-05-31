@@ -1,0 +1,11 @@
+object evaluationClickContrainer: TevaluationClickContrainer
+  Size.Width = 450.000000000000000000
+  Size.Height = 339.000000000000000000
+  Size.PlatformDefault = False
+  object evalClickContain: TLayout
+    Size.Width = 450.000000000000000000
+    Size.Height = 339.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+  end
+end

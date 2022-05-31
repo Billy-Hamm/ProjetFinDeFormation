@@ -1,0 +1,121 @@
+object RechMC: TRechMC
+  Align = Top
+  Size.Width = 416.000000000000000000
+  Size.Height = 179.000000000000000000
+  Size.PlatformDefault = False
+  object bgc: TRectangle
+    Align = Contents
+    Fill.Color = claWhite
+    Size.Width = 416.000000000000000000
+    Size.Height = 179.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Thickness = 0.000000000000000000
+  end
+  object headerRech: TLayout
+    Align = Top
+    Size.Width = 416.000000000000000000
+    Size.Height = 41.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object btnCritere: TRectangle
+      Position.X = 2.000000000000000000
+      Position.Y = 5.000000000000000000
+      Size.Width = 143.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Thickness = 0.000000000000000000
+      object Label1: TLabel
+        Align = Right
+        StyledSettings = [Style, FontColor]
+        Position.X = 120.000000000000000000
+        RotationAngle = 90.000000000000000000
+        Size.Width = 23.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Family = 'Papyrus'
+        TextSettings.Font.Size = 20.000000000000000000
+        TextSettings.HorzAlign = Center
+        Text = '>'
+        TabOrder = 0
+      end
+      object Label4: TLabel
+        Align = Client
+        StyledSettings = [Style, FontColor]
+        Size.Width = 120.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Family = 'Roboto'
+        TextSettings.Font.Size = 14.000000000000000000
+        TextSettings.HorzAlign = Center
+        Text = 'Crit'#232'res'
+        TabOrder = 1
+      end
+    end
+    object Rectangle1: TRectangle
+      Fill.Color = xFF789F7B
+      Position.X = 307.000000000000000000
+      Position.Y = 5.000000000000000000
+      Size.Width = 105.000000000000000000
+      Size.Height = 25.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Thickness = 0.000000000000000000
+      XRadius = 5.000000000000000000
+      YRadius = 5.000000000000000000
+      object Label3: TLabel
+        Align = Client
+        StyledSettings = [Style]
+        Size.Width = 105.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Family = 'Roboto'
+        TextSettings.Font.Size = 14.000000000000000000
+        TextSettings.FontColor = claWhite
+        TextSettings.HorzAlign = Center
+        Text = 'Valider'
+        TabOrder = 0
+      end
+    end
+  end
+  object conteneurCritereElement: TLayout
+    ClipChildren = True
+    Position.X = 2.000000000000000000
+    Position.Y = 31.000000000000000000
+    Size.Width = 143.000000000000000000
+    Size.Height = 1.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    object conteneurCritere: TVertScrollBox
+      Align = Client
+      Size.Width = 143.000000000000000000
+      Size.Height = 1.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Viewport.Width = 143.000000000000000000
+      Viewport.Height = 1.000000000000000000
+    end
+    object appaHauteur: TFloatAnimation
+      Duration = 0.200000002980232200
+      OnFinish = appaHauteurFinish
+      PropertyName = 'Height'
+      StartValue = 1.000000000000000000
+      StopValue = 192.000000000000000000
+    end
+    object dispHauteur: TFloatAnimation
+      Duration = 0.200000002980232200
+      OnFinish = dispHauteurFinish
+      PropertyName = 'Height'
+      StartValue = 191.000000000000000000
+      StopValue = 1.000000000000000000
+    end
+  end
+  object conteneurSaisiCritere: TVertScrollBox
+    Align = Client
+    Padding.Top = 2.000000000000000000
+    Size.Width = 416.000000000000000000
+    Size.Height = 138.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Viewport.Width = 416.000000000000000000
+    Viewport.Height = 138.000000000000000000
+  end
+end

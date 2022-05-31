@@ -1,0 +1,48 @@
+object FrNavElement2: TFrNavElement2
+  Size.Width = 100.000000000000000000
+  Size.Height = 35.000000000000000000
+  Size.PlatformDefault = False
+  object Rectangle1: TRectangle
+    Align = Client
+    Size.Width = 100.000000000000000000
+    Size.Height = 35.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Thickness = 0.000000000000000000
+    XRadius = 7.000000000000000000
+    YRadius = 7.000000000000000000
+    object Label1: TLabel
+      Align = Client
+      StyledSettings = []
+      Size.Width = 100.000000000000000000
+      Size.Height = 35.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Rockwell'
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      TextSettings.HorzAlign = Center
+      Text = 'Employes'
+      TabOrder = 0
+      object InvertEffect1: TInvertEffect
+        Enabled = False
+      end
+    end
+    object ColorAnimation1: TColorAnimation
+      Duration = 0.200000002980232200
+      OnFinish = ColorAnimation1Finish
+      PropertyName = 'Fill.Color'
+      StartValue = claWhite
+      StopValue = xFFC63939
+      Trigger = 'IsMouseOver=true'
+      TriggerInverse = 'IsMouseOver=false'
+    end
+    object ShadowEffect1: TShadowEffect
+      Distance = 3.000000000000000000
+      Direction = 45.000000000000000000
+      Softness = 0.300000011920929000
+      Opacity = 0.600000023841857900
+      ShadowColor = claBlack
+      Trigger = 'IsMouseOver=true'
+      Enabled = False
+    end
+  end
+end

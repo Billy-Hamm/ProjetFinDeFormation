@@ -1,0 +1,269 @@
+object filtreMaquetteClickFdp: TfiltreMaquetteClickFdp
+  Align = Top
+  Size.Width = 782.000000000000000000
+  Size.Height = 68.000000000000000000
+  Size.PlatformDefault = False
+  object containerFiltreFdp: TLayout
+    Align = Top
+    Size.Width = 782.000000000000000000
+    Size.Height = 89.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object Line1: TLine
+      LineType = Diagonal
+      Position.X = 54.000000000000000000
+      Position.Y = 25.000000000000000000
+      Size.Width = 662.000000000000000000
+      Size.Height = 1.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object containerTitreFiltreFdp: TLayout
+      Position.X = 173.000000000000000000
+      Position.Y = 4.000000000000000000
+      Size.Width = 544.000000000000000000
+      Size.Height = 20.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      object Label2: TLabel
+        StyledSettings = []
+        Position.X = 363.000000000000000000
+        Position.Y = 2.000000000000000000
+        Size.Width = 96.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Family = 'Roboto'
+        TextSettings.Font.Size = 14.000000000000000000
+        TextSettings.Font.StyleExt = {00050000000000000004000000}
+        TextSettings.FontColor = xFF4E4E50
+        Text = 'Jr. Compl'#232'te'
+        TabOrder = 6
+      end
+      object Label3: TLabel
+        StyledSettings = []
+        Position.X = 489.000000000000000000
+        Position.Y = 2.000000000000000000
+        Size.Width = 56.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Family = 'Roboto'
+        TextSettings.Font.Size = 14.000000000000000000
+        TextSettings.Font.StyleExt = {00050000000000000004000000}
+        TextSettings.FontColor = xFF4E4E50
+        Text = 'H. Supp'
+        TabOrder = 5
+      end
+      object Label1: TLabel
+        StyledSettings = []
+        Position.X = 271.000000000000000000
+        Position.Y = 2.000000000000000000
+        Size.Width = 80.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Family = 'Roboto'
+        TextSettings.Font.Size = 14.000000000000000000
+        TextSettings.Font.StyleExt = {00050000000000000004000000}
+        TextSettings.FontColor = xFF4E4E50
+        Text = 'H. D'#233'part'
+        TabOrder = 7
+      end
+      object performanceEmploye: TLabel
+        StyledSettings = []
+        Position.X = 158.000000000000000000
+        Position.Y = 2.000000000000000000
+        Size.Width = 93.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Family = 'Roboto'
+        TextSettings.Font.Size = 14.000000000000000000
+        TextSettings.Font.StyleExt = {00050000000000000004000000}
+        TextSettings.FontColor = xFF4E4E50
+        Text = 'H. Arriv'#233'e'
+        TabOrder = 3
+      end
+      object posteEmploye: TLabel
+        StyledSettings = []
+        Position.X = 83.000000000000000000
+        Position.Y = 2.000000000000000000
+        Size.Width = 54.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Family = 'Roboto'
+        TextSettings.Font.Size = 14.000000000000000000
+        TextSettings.Font.StyleExt = {00050000000000000004000000}
+        TextSettings.FontColor = xFF4E4E50
+        Text = 'Retard'
+        TabOrder = 2
+      end
+      object identifiant: TLabel
+        StyledSettings = []
+        Position.X = 11.000000000000000000
+        Position.Y = 2.000000000000000000
+        Size.Width = 56.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Family = 'Roboto'
+        TextSettings.Font.Size = 14.000000000000000000
+        TextSettings.Font.StyleExt = {00050000000000000004000000}
+        TextSettings.FontColor = xFF4E4E50
+        Text = 'statut'
+        TabOrder = 4
+      end
+    end
+    object Layout1: TLayout
+      Position.X = 173.000000000000000000
+      Position.Y = 34.000000000000000000
+      Size.Width = 544.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 2
+      object Rectangle4: TRectangle
+        Fill.Color = xFF518DE6
+        Position.X = 489.000000000000000000
+        Position.Y = 4.000000000000000000
+        Size.Width = 32.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Thickness = 0.000000000000000000
+        XRadius = 3.000000000000000000
+        YRadius = 3.000000000000000000
+      end
+      object CheckBox2: TCheckBox
+        Position.X = 393.000000000000000000
+        Position.Y = 3.000000000000000000
+        Size.Width = 21.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 4
+      end
+      object Rectangle3: TRectangle
+        Position.X = 271.000000000000000000
+        Position.Y = 4.000000000000000000
+        Size.Width = 70.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Thickness = 0.000000000000000000
+        XRadius = 3.000000000000000000
+        YRadius = 3.000000000000000000
+        object Label6: TLabel
+          StyledSettings = [FontColor]
+          Position.X = 32.000000000000000000
+          Position.Y = 4.000000000000000000
+          Size.Width = 9.000000000000000000
+          Size.Height = 17.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Family = 'Roboto'
+          TextSettings.Font.Size = 18.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          Text = ':'
+          TabOrder = 0
+        end
+        object Edit3: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Left
+          TabOrder = 1
+          Opacity = 0.500000000000000000
+          Size.Width = 30.000000000000000000
+          Size.Height = 25.000000000000000000
+          Size.PlatformDefault = False
+        end
+        object Edit4: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Right
+          TabOrder = 2
+          Position.X = 40.000000000000000000
+          Opacity = 0.500000000000000000
+          Size.Width = 30.000000000000000000
+          Size.Height = 25.000000000000000000
+          Size.PlatformDefault = False
+        end
+      end
+      object heureArrive: TRectangle
+        Fill.Color = claWhite
+        Position.X = 156.000000000000000000
+        Position.Y = 4.000000000000000000
+        Size.Width = 70.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Thickness = 0.500000000000000000
+        XRadius = 3.000000000000000000
+        YRadius = 3.000000000000000000
+        object Label5: TLabel
+          StyledSettings = [FontColor]
+          Position.X = 32.000000000000000000
+          Position.Y = 4.000000000000000000
+          Size.Width = 9.000000000000000000
+          Size.Height = 17.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Family = 'Roboto'
+          TextSettings.Font.Size = 18.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          Text = ':'
+          TabOrder = 0
+        end
+        object Edit1: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Left
+          TabOrder = 1
+          Opacity = 0.500000000000000000
+          Size.Width = 30.000000000000000000
+          Size.Height = 25.000000000000000000
+          Size.PlatformDefault = False
+        end
+        object Edit2: TEdit
+          Touch.InteractiveGestures = [LongTap, DoubleTap]
+          Align = Right
+          TabOrder = 2
+          Position.X = 40.000000000000000000
+          Opacity = 0.500000000000000000
+          Size.Width = 30.000000000000000000
+          Size.Height = 25.000000000000000000
+          Size.PlatformDefault = False
+        end
+      end
+      object CheckBox1: TCheckBox
+        Position.X = 96.000000000000000000
+        Position.Y = 4.000000000000000000
+        Size.Width = 21.000000000000000000
+        Size.Height = 23.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 3
+      end
+      object Rectangle2: TRectangle
+        Position.X = 9.000000000000000000
+        Position.Y = 3.000000000000000000
+        Size.Width = 50.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Thickness = 0.000000000000000000
+        XRadius = 3.000000000000000000
+        YRadius = 3.000000000000000000
+        object Label7: TLabel
+          StyledSettings = []
+          Position.X = 6.000000000000000000
+          Position.Y = 5.000000000000000000
+          Size.Width = 25.000000000000000000
+          Size.Height = 17.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Family = 'Roboto'
+          TextSettings.Font.Size = 14.000000000000000000
+          TextSettings.Font.StyleExt = {00050000000000000004000000}
+          Text = 'PR'
+          TabOrder = 0
+        end
+      end
+    end
+    object Label4: TLabel
+      StyledSettings = [FontColor]
+      Position.X = 54.000000000000000000
+      Position.Y = 6.000000000000000000
+      Size.Width = 86.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00070000000000000004000000}
+      Text = '23/05/2020'
+      TabOrder = 3
+    end
+  end
+end

@@ -1,0 +1,206 @@
+unit logiqueFicheDePointage;
+
+interface
+
+uses System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+FMX.Graphics, FMX.Objects, FMX.Ani,  FMX.Dialogs, Data.DB, Data.Win.ADODB,
+FrTopElementFichePointage,FrFicheDePointage, dmBasesDeDonnees, logiquePartager,
+FrEmployeMaquetteFdp;
+
+//types
+type
+    FicheDePointageHerite = class (TficheDePointage)
+
+      private
+       procedure clicValidationFdp (Sender : TObject);
+//       procedure clicValidationHeureSupFpd (Sender : TObject);
+      public
+
+    end;
+
+// Procedures et fonctions
+  //procedure générique
+   procedure recupererDonneesFdp ();
+   procedure recupererDonneesFdpDejaInscript (date_jour : TDateTime);
+
+  // Procedrue de creation
+   procedure initialisationFdp ();
+   procedure creerTopElementFdp ();
+   procedure creerConteneurFdp ();
+   procedure creerElementFdp ();
+//   procedure creerEnsembleElementFdp ();
+
+
+
+// Variables
+var
+   topElementFdp : TtopElementFdp;
+   conteneurFdp : FicheDePointageHerite;
+   nombreEmployeFdp : integer;
+   elemenetPersonneFdp : array of string;
+   LesEmployeFdp : array of TemployeMaquetteFdp;
+   tabRenvoyerParValidationPointage : tabElementPointage;
+   unEmployeFdp : TemployeMaquetteFdp;
+   sentinelleFdp : Boolean;
+   adoRep :  TADOQuery;
+
+
+implementation
+uses Principale;
+
+procedure initialisationFdp ();
+begin
+   sentinelleFdp := True;
+   adoRep := basesDeDonnees.ADOQuery1;
+end;
+
+procedure creerTopElementFdp ();
+begin
+  topElementFdp := TtopElementFdp.Create(Pprincipale);
+  topElementFdp.ajoutTempsHeure();
+end;
+
+
+
+procedure recupererDonneesFdp ();
+var
+   reqSqlServer1, reqSqlServer2 : string ;
+   j : integer;
+begin
+     j := 0 ;
+// Ici EMPLOYE n'est pas une table mais une vue (view) qui se trouve sur le server (BDD)
+   reqSqlServer1 := 'SELECT COUNT(*) FROM EMPLOYE';
+   // On n'a pas fait la bonne requete, celle-ci n'est pas que pour le teste.
+   { la bonne requête sera avec une vérification de la date du jour pour faire la
+   la différence entre la lecture et l'écriture des information. En grosso modo,
+   si la date donner est inférieur à la date du jour, alors impossbile d'écrire,
+   juste la lecture des ancienne données. }
+   reqSqlServer2 := 'SELECT id_ce , nom_pers, pre_pers FROM EMPLOYE';
+
+
+
+   ExeRequeteSqlServer(reqSqlServer1);
+   adoRep.First;
+   while not adoRep.Eof do
+    begin
+      nombreEmployeFdp := adoRep.Fields[0].AsInteger;
+      adoRep.Next;
+    end;
+
+
+
+    // Le 2 représenter le nombre d'information à récupérer pour un employé
+    SetLength(elemenetPersonneFdp, nombreEmployeFdp * 3);
+
+    ExeRequeteSqlServer(reqSqlServer2);
+    adoRep.First;
+    while not adoRep.Eof do
+      begin
+      // id_ce (id personne) me servira à nommer chaque employéMaquetteFdp
+        elemenetPersonneFdp[j] := adoRep.FieldByName('id_ce').AsString;
+        j := j + 1;
+        elemenetPersonneFdp[j] := adoRep.FieldByName('nom_pers').AsString;
+        j := j + 1;
+        elemenetPersonneFdp[j] := adoRep.FieldByName('pre_pers').AsString;
+        j := j + 1;
+        adoRep.Next;
+      end;
+end;
+
+
+
+procedure creerElementFdp ();
+var
+   i,k : integer;
+begin
+k := 0;
+
+   if sentinelleFdp then
+    begin
+      recupererDonneesFdp ();
+      sentinelleFdp := False;
+    end;
+
+    SetLength(LesEmployeFdp, nombreEmployeFdp);
+    for  i := 0 to nombreEmployeFdp-1 do
+         begin
+
+
+            // Création de la frame puis renommer le name
+            UnEmployeFdp := TemployeMaquetteFdp.Create(conteneurFdp);
+            UnEmployeFdp.Name := elemenetPersonneFdp[k];
+            // Injection de données dans la Frame
+            UnEmployeFdp.nomEmploye.Text := elemenetPersonneFdp[k+1] + ' ' +
+            elemenetPersonneFdp[k+2];
+            // Ici le 3 représente le nombre d'élement à prendre
+            k := k + 3;
+            // Stocker les frames dans le tableau pour l'affichage
+            LesEmployeFdp[i] := UnEmployeFdp;
+         end;
+end;
+
+
+{ Cette fonction va prendre un parametre date, si la date donner est inférieur
+à la du jour, alors la création de employé ne se fera que pour les employé dont on a
+récupérer les informations, si c'est égale, alors, on va créer et les employés dont on
+à récupérer les informations et ceux qui n'ont pas encore des informations et enfin,
+si la date est supérieur à la date du jour, alors on ne va pas créer les employés. }
+procedure recupererDonneesFdpDejaInscript (date_jour : TDateTime);
+var
+   req : string;
+begin
+   // Je compte créer cette requete au niveau de la bdd comme fonction
+   req := 'SELECT * FROM FICHE_POINTAGE WHERE date_jour = ' + DateToStr(date_jour) ;
+   ExeRequeteSqlServer (req);
+   adoRep.First;
+   while not adoRep.Eof do
+    begin
+      if adoRep.Fields[0].AsString <> 'NULL' then
+        begin
+
+        end;
+
+    end;
+end;
+
+
+procedure creerConteneurFdp ();
+begin
+   conteneurFdp := FicheDePointageHerite.Create(Pprincipale);
+   conteneurFdp.valFdp.OnClick := conteneurFdp.clicValidationFdp;
+end;
+
+procedure FicheDePointageHerite.clicValidationFdp(Sender: TObject);
+var
+i : integer;
+req : string;
+begin
+  for i := 0 to nombreEmployeFdp-1 do
+    begin
+      if LesEmployeFdp[i].selection = True then
+        begin
+        { Au lieu de construire cette requette ici, on va créer un fonction au niveau de la
+         BDD avec des variable pour des vérification d'erreure }
+          tabRenvoyerParValidationPointage := LesEmployeFdp[i].validationPointage();
+           if Length(tabRenvoyerParValidationPointage) >= 2 then
+            begin
+              req := 'INSERT INTO FICHE_POINTAGE ' +
+              'date_jour,statut,heure_arrive,heure_depart,retard,journe_complete,obs_fdp,id_ce' +
+              'VALUES' +
+              '( getDate()' + ',' + tabRenvoyerParValidationPointage [0] + ',' +
+              tabRenvoyerParValidationPointage [1] + ',' + tabRenvoyerParValidationPointage [2] +
+              tabRenvoyerParValidationPointage [3] + ',' + tabRenvoyerParValidationPointage [4] +
+              tabRenvoyerParValidationPointage [5] + ',' + LesEmployeFdp[i].Name + ' )';
+            end
+            else
+              begin
+                ShowMessage(tabRenvoyerParValidationPointage[0]);
+              end;
+        end;
+    end;
+end;
+
+
+
+
+end.

@@ -1,0 +1,5 @@
+object topElementInfo: TtopElementInfo
+  Size.Width = 229.000000000000000000
+  Size.Height = 72.000000000000000000
+  Size.PlatformDefault = False
+end

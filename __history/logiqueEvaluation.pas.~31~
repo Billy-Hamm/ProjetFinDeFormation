@@ -1,0 +1,226 @@
+unit logiqueEvaluation;
+
+interface
+
+uses System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+FMX.Graphics, FMX.Objects, FMX.Dialogs, FrEvaluationTopElement, logiquePartager,
+FrEmployeMaquetteEval, FrEvaluation;
+
+
+// Procédure générique
+procedure requeteSql (sqlReq : string);
+
+// Procédures création
+  //Procédure d'initialisation
+  procedure creeEnsembleElementsEval ();
+procedure creeTopElementEval ();
+procedure creeEmployeEvals ();
+procedure creeElementEval ();
+
+// Procédure d'ajout
+procedure ajouterTopElementEval ();
+procedure ajouterEnsembleElementsEmployeEval ();
+procedure ajouterTousEmployeEval ();
+procedure ajouterMargeEmployeEval ();
+procedure ajouterEmployeEval ();
+
+// Procédure de retrait
+procedure retirerTopElementEval ();
+procedure retirerTousElementEmployeEval ();
+procedure retirerEnsembleElementEmployeEval ();
+
+var
+  topEvaluation : TevaluationTopElement;
+  UnEmployeEval : TemployeMaquetteEval;
+  LesEmployeEval : array of TemployeMaquetteEval;
+  TousEmployeEval : Tevaluation;
+  nombreEmployeEval : Integer;
+  // Cette variable permet de faire à ce que le code sql ne soit pas exécté + une fois
+  sentinelle : Integer;
+
+implementation
+
+uses Principale, dmBasesDeDonnees;
+
+
+
+ // Procédure de création
+procedure creeEnsembleElementsEval ();
+begin
+  sentinelle := 0;
+  creeTopElementEval ();
+  creeElementEval ();
+end;
+
+procedure creeTopElementEval ();
+begin
+  topEvaluation := TevaluationTopElement.Create(Pprincipale);
+end;
+
+procedure creeElementEval ();
+begin
+  TousEmployeEval := Tevaluation.Create(Pprincipale);
+end;
+
+procedure creeEmployeEvals ();
+ var
+  i : Integer;
+  reqSql1, reqSql2 : string;
+begin
+  i := 1;
+  nombreEmployeEval := 0;
+  reqSql1 := 'SELECT idEmploye, nomEmp, prenomEmp FROM Employe';
+  reqSql2 := 'SELECT count(*) FROM Employe';
+
+  requeteSql(reqSql2);
+   basesDeDonnees.FDQuery1.First;
+   while not basesDeDonnees.FDQuery1.Eof do
+    begin
+      nombreEmployeEval := basesDeDonnees.FDQuery1.Fields[0].AsInteger;
+      basesDeDonnees.FDQuery1.Next;
+    end;
+
+    SetLength(LesEmployeEval, nombreEmployeEval);
+
+
+   requeteSql (reqSql1);
+    basesDeDonnees.FDQuery1.First;
+    while not basesDeDonnees.FDQuery1.Eof do
+      begin
+        // Création de la frame puis renommer le name
+        UnEmployeEval := TemployeMaquetteEval.Create(Pprincipale);
+        UnEmployeEval.Name := UnEmployeEval.Name + inttostr(i);
+
+        // Injection de données dans la Frame
+        UnEmployeEval.identifiant.Text := basesDeDonnees.FDQuery1.FieldByName('idEmploye').AsString;
+        UnEmployeEval.nomEmploye.Text := basesDeDonnees.FDQuery1.FieldByName('nomEmp').AsString + ' ' +
+        basesDeDonnees.FDQuery1.FieldByName('prenomEmp').AsString;
+
+        // Stocker les frame dans le tableau pour l'affichage
+        LesEmployeEval[i] := UnEmployeEval;
+        basesDeDonnees.FDQuery1.Next;
+        i := i + 1;
+      end;
+
+end;
+
+
+procedure requeteSql (sqlReq : string);
+begin
+   with basesDeDonnees.FDQuery1 do
+    begin
+      try
+       Close;
+       SQL.Clear;
+       SQL.Add(sqlReq);
+       Open;
+      Except
+       on e : Exception do
+        begin
+        {
+          Ajouter un peu de code pour une meilleur gestion de l'erreur
+        }
+          ShowMessage('Requête échouée');
+        end;
+
+      end;
+    end;
+
+
+end;
+
+
+
+
+
+// Procédure d'ajout
+
+procedure ajouterEnsembleElementsEmployeEval ();
+begin
+  ajouterTopElementEval ();
+  ajouterEmployeEval ();
+end;
+
+
+procedure ajouterTopElementEval ();
+begin
+  topEvaluation.Parent := Pprincipale.containeTopElement;
+  appaTopElementEval ();
+  TopElementEvalAnim.Parent := topEvaluation;
+  TopElementEvalAnim.Enabled := true;
+end;
+
+
+
+procedure ajouterTousEmployeEval ();
+  var
+    j : Integer;
+begin
+  creeEmployeEvals ();
+  ajouterMargeEmployeEval ();
+
+  for j:= 1 to Length(LesEmployeEval) do
+    begin
+      LesEmployeEval[j].Parent := TousEmployeEval.VertScrollBox1;
+    end;
+
+end;
+
+
+procedure ajouterEmployeEval ();
+begin
+
+  if sentinelle = 0 then
+    begin
+      ajouterTousEmployeEval();
+      sentinelle := sentinelle + 1;
+    end;
+
+   TousEmployeEval.Parent := Pprincipale.prinContainer;
+   appaTousEmployesEval();
+   TousEmployeEvalAnim.Parent := TousEmployeEval;
+   TousEmployeEvalAnim.Enabled := True;
+//   appaTousEmployes ();
+//   TousEmployesAnim.Parent := TousEmploye;
+//   TousEmployesAnim.Enabled := true;
+
+
+end;
+
+
+procedure ajouterMargeEmployeEval ();
+begin
+  // La taille du conteneur des employés
+    TousEmployeEval.Height := TousEmployeEval.topListeEmploye.Height +
+    TousEmployeEval.titreListeEmploye.Height + (UnEmployeEval.Height * nombreEmployeEval);
+
+  // Taille de la verticalBox  du conteneur des employés
+    TousEmployeEval.VertScrollBox1.Height := UnEmployeEval.Height * nombreEmployeEval ;
+
+  // Taille du prinContainer
+    Pprincipale.prinContainer.Height := TousEmployeEval.Height ;
+end;
+
+
+
+
+
+// Procédure de retrait
+
+procedure retirerTopElementEval ();
+begin
+  topEvaluation.Parent := nil;
+end;
+
+procedure retirerTousElementEmployeEval ();
+begin
+  TousEmployeEval.Parent := nil;
+end;
+
+procedure retirerEnsembleElementEmployeEval ();
+begin
+   retirerTopElementEval ();
+   retirerTousElementEmployeEval ();
+end;
+
+end.

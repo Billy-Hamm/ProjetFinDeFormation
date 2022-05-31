@@ -1,0 +1,107 @@
+object topElementInfo: TtopElementInfo
+  Align = Left
+  HitTest = False
+  Size.Width = 229.000000000000000000
+  Size.Height = 72.000000000000000000
+  Size.PlatformDefault = False
+  object container: TLayout
+    Size.Width = 229.000000000000000000
+    Size.Height = 72.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 6
+    object valInfo: TLayout
+      Align = Right
+      Position.X = 116.000000000000000000
+      Size.Width = 113.000000000000000000
+      Size.Height = 72.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      object valPeriode: TLabel
+        StyledSettings = []
+        Margins.Top = 5.000000000000000000
+        Position.Y = 5.000000000000000000
+        Size.Width = 113.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Family = 'Roboto'
+        TextSettings.Font.Size = 14.000000000000000000
+        TextSettings.Font.StyleExt = {00050000000000000004000000}
+        Text = ': Mars 2020'
+        TabOrder = 7
+      end
+      object valJrOuvrable: TLabel
+        StyledSettings = []
+        Position.Y = 27.000000000000000000
+        Size.Width = 80.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Family = 'Roboto'
+        TextSettings.Font.Size = 14.000000000000000000
+        TextSettings.Font.StyleExt = {00050000000000000004000000}
+        Text = ': 26'
+        TabOrder = 6
+      end
+      object valDate: TLabel
+        StyledSettings = []
+        Margins.Bottom = 5.000000000000000000
+        Position.Y = 50.000000000000000000
+        Size.Width = 113.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Family = 'Roboto'
+        TextSettings.Font.Size = 14.000000000000000000
+        TextSettings.Font.StyleExt = {00050000000000000004000000}
+        Text = ': 23/05/20'
+        TabOrder = 5
+      end
+    end
+    object info: TLayout
+      Align = Left
+      Size.Width = 113.000000000000000000
+      Size.Height = 72.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object periode: TLabel
+        StyledSettings = []
+        Margins.Top = 5.000000000000000000
+        Position.X = 5.000000000000000000
+        Position.Y = 5.000000000000000000
+        Size.Width = 68.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Family = 'Roboto'
+        TextSettings.Font.Size = 14.000000000000000000
+        TextSettings.Font.StyleExt = {00050000000000000004000000}
+        Text = 'P'#233'riode'
+        TabOrder = 7
+      end
+      object jrOuvrable: TLabel
+        StyledSettings = []
+        Position.X = 6.000000000000000000
+        Position.Y = 27.000000000000000000
+        Size.Width = 99.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Family = 'Roboto'
+        TextSettings.Font.Size = 14.000000000000000000
+        TextSettings.Font.StyleExt = {00050000000000000004000000}
+        Text = 'Jour Ouvrable'
+        TabOrder = 6
+      end
+      object date: TLabel
+        StyledSettings = []
+        Margins.Bottom = 5.000000000000000000
+        Position.X = 5.000000000000000000
+        Position.Y = 50.000000000000000000
+        Size.Width = 113.000000000000000000
+        Size.Height = 17.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Family = 'Roboto'
+        TextSettings.Font.Size = 14.000000000000000000
+        TextSettings.Font.StyleExt = {00050000000000000004000000}
+        Text = 'Date'
+        TabOrder = 5
+      end
+    end
+  end
+end

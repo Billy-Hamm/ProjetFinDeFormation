@@ -1,0 +1,57 @@
+object employeTopElemnt: TemployeTopElemnt
+  Align = Client
+  Size.Width = 553.000000000000000000
+  Size.Height = 72.000000000000000000
+  Size.PlatformDefault = False
+  object Layout1: TLayout
+    Align = Right
+    Position.X = 376.000000000000000000
+    Size.Width = 177.000000000000000000
+    Size.Height = 72.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    object Rectangle8: TRectangle
+      Align = Center
+      Cursor = crHandPoint
+      Fill.Color = xFFC63939
+      Size.Width = 168.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Thickness = 0.000000000000000000
+      XRadius = 5.000000000000000000
+      YRadius = 5.000000000000000000
+      OnMouseEnter = Rectangle8MouseEnter
+      OnMouseLeave = Rectangle8MouseLeave
+      object Label12: TLabel
+        Align = Client
+        StyledSettings = []
+        Size.Width = 168.000000000000000000
+        Size.Height = 30.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Family = 'Roboto'
+        TextSettings.Font.Size = 14.000000000000000000
+        TextSettings.Font.StyleExt = {00050000000000000004000000}
+        TextSettings.FontColor = claWhite
+        TextSettings.HorzAlign = Center
+        Text = 'Ajouter Employ'#233
+        TabOrder = 0
+      end
+      object ColorAnimation1: TColorAnimation
+        Duration = 0.200000002980232200
+        Inverse = True
+        OnProcess = ColorAnimation1Process
+        PropertyName = 'Fill.Color'
+        StartValue = xFFC63939
+        StopValue = xFF31976F
+        Trigger = 'IsMouseOver=true'
+        TriggerInverse = 'IsMouseOver=false'
+      end
+      object ShadowEffect1: TShadowEffect
+        Softness = 0.500000000000000000
+        Opacity = 1.000000000000000000
+        ShadowColor = claNull
+        Trigger = 'IsMouseOver=true'
+      end
+    end
+  end
+end

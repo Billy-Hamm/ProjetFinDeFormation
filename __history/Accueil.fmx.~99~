@@ -1,0 +1,377 @@
+object FrAccueil: TFrAccueil
+  Size.Width = 782.000000000000000000
+  Size.Height = 376.000000000000000000
+  Size.PlatformDefault = False
+  object FlowLayout1: TFlowLayout
+    Align = Top
+    Size.Width = 782.000000000000000000
+    Size.Height = 188.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Justify = Center
+    JustifyLastLine = Justify
+    FlowDirection = LeftToRight
+    object Rectangle1: TRectangle
+      Align = Left
+      Margins.Left = 10.000000000000000000
+      Margins.Top = 5.000000000000000000
+      Margins.Right = 10.000000000000000000
+      Position.X = 10.000000000000000000
+      Position.Y = 5.000000000000000000
+      Size.Width = 355.000000000000000000
+      Size.Height = 175.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Thickness = 0.000000000000000000
+      XRadius = 5.000000000000000000
+      YRadius = 5.000000000000000000
+      OnMouseEnter = Rectangle1MouseEnter
+      OnMouseLeave = Rectangle1MouseLeave
+      object ColorAnimation1: TColorAnimation
+        StyleName = 'COLOR-CHANGE'
+        AnimationType = Out
+        Duration = 0.500000000000000000
+        Interpolation = Sinusoidal
+        PropertyName = 'Fill.Color'
+        StartValue = xFFE0E0E0
+        StopValue = claGray
+        Trigger = 'IsMouseOver=true'
+        TriggerInverse = 'IsMouseOver=false'
+      end
+      object ShadowEffect1: TShadowEffect
+        Distance = 3.000000000000000000
+        Direction = 90.000000000000000000
+        Softness = 0.600000023841857900
+        Opacity = 0.600000023841857900
+        ShadowColor = claBlack
+        Trigger = 'IsMouseOver=true'
+        Enabled = False
+      end
+      object FloatAnimation1: TFloatAnimation
+        Enabled = True
+        Duration = 0.200000002980232200
+        PropertyName = 'Width'
+        StartValue = 350.000000000000000000
+        StopValue = 370.000000000000000000
+      end
+      object VertScrollBox1: TVertScrollBox
+        Align = Client
+        HitTest = False
+        Size.Width = 355.000000000000000000
+        Size.Height = 175.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Viewport.Width = 355.000000000000000000
+        Viewport.Height = 175.000000000000000000
+        inline FrElementAccueil1: TFrElementAccueil
+          Align = Top
+          HitTest = False
+          Margins.Top = 3.000000000000000000
+          Margins.Bottom = 3.000000000000000000
+          Position.Y = 3.000000000000000000
+          Size.Width = 355.000000000000000000
+          Size.Height = 40.000000000000000000
+          Size.PlatformDefault = False
+        end
+      end
+      object nomMenuEmp: TRectangle
+        Align = Top
+        Fill.Color = claWhite
+        Opacity = 0.800000011920929000
+        Position.X = 99.000000000000000000
+        Position.Y = -16.000000000000000000
+        Size.Width = 150.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Thickness = 0.000000000000000000
+        Visible = False
+        XRadius = 3.000000000000000000
+        YRadius = 7.000000000000000000
+        object texteMenuEmp: TLabel
+          Align = Client
+          StyledSettings = [FontColor]
+          Size.Width = 150.000000000000000000
+          Size.Height = 25.000000000000000000
+          Size.PlatformDefault = False
+          TextSettings.Font.Family = 'Roboto'
+          TextSettings.Font.Size = 13.000000000000000000
+          TextSettings.Font.StyleExt = {00070000000000000004000000}
+          TextSettings.HorzAlign = Center
+          Text = 'Employ'#233's'
+          TabOrder = 0
+        end
+        object animEntreeMenu: TFloatAnimation
+          Duration = 0.200000002980232200
+          PropertyName = 'Position.Y'
+          StartValue = -16.000000000000000000
+          StopValue = -8.000000000000000000
+        end
+        object animSortieMenu: TFloatAnimation
+          Duration = 0.200000002980232200
+          OnFinish = animSortieMenuFinish
+          PropertyName = 'Position.Y'
+          StartValue = -8.000000000000000000
+          StopValue = -16.000000000000000000
+        end
+        object nomMenuOmbre: TShadowEffect
+          Distance = 3.000000000000000000
+          Direction = 45.000000000000000000
+          Softness = 0.300000011920929000
+          Opacity = 0.600000023841857900
+          ShadowColor = claWhite
+          Enabled = False
+        end
+      end
+    end
+    object Rectangle2: TRectangle
+      Margins.Left = 10.000000000000000000
+      Margins.Top = 5.000000000000000000
+      Margins.Right = 10.000000000000000000
+      Position.X = 385.000000000000000000
+      Position.Y = 5.000000000000000000
+      Size.Width = 355.000000000000000000
+      Size.Height = 175.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Thickness = 0.000000000000000000
+      XRadius = 5.000000000000000000
+      YRadius = 5.000000000000000000
+      OnMouseEnter = Rectangle2MouseEnter
+      OnMouseLeave = Rectangle2MouseLeave
+      object ColorAnimation2: TColorAnimation
+        StyleName = 'COLOR-CHANGE'
+        AnimationType = Out
+        Duration = 0.500000000000000000
+        Interpolation = Sinusoidal
+        PropertyName = 'Fill.Color'
+        StartValue = xFFE0E0E0
+        StopValue = claGray
+        Trigger = 'IsMouseOver=true'
+        TriggerInverse = 'IsMouseOver=false'
+      end
+      object ShadowEffect2: TShadowEffect
+        Distance = 3.000000000000000000
+        Direction = 90.000000000000000000
+        Softness = 0.600000023841857900
+        Opacity = 0.600000023841857900
+        ShadowColor = claBlack
+        Trigger = 'IsMouseOver=true'
+        Enabled = False
+      end
+      object FloatAnimation2: TFloatAnimation
+        Duration = 0.200000002980232200
+        PropertyName = 'Width'
+        StartValue = 350.000000000000000000
+        StopValue = 370.000000000000000000
+      end
+      object VertScrollBox2: TVertScrollBox
+        Align = Client
+        HitTest = False
+        Size.Width = 355.000000000000000000
+        Size.Height = 175.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Viewport.Width = 355.000000000000000000
+        Viewport.Height = 175.000000000000000000
+        object nomMenuAbs: TRectangle
+          Align = Top
+          Fill.Color = claWhite
+          Opacity = 0.800000011920929000
+          Position.X = 107.000000000000000000
+          Position.Y = -8.000000000000000000
+          Size.Width = 150.000000000000000000
+          Size.Height = 25.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Thickness = 0.000000000000000000
+          Visible = False
+          XRadius = 3.000000000000000000
+          YRadius = 7.000000000000000000
+          object texteMenuAbs: TLabel
+            Align = Client
+            StyledSettings = [FontColor]
+            Size.Width = 150.000000000000000000
+            Size.Height = 25.000000000000000000
+            Size.PlatformDefault = False
+            TextSettings.Font.Family = 'Roboto'
+            TextSettings.Font.Size = 13.000000000000000000
+            TextSettings.Font.StyleExt = {00070000000000000004000000}
+            TextSettings.HorzAlign = Center
+            Text = 'Absences'
+            TabOrder = 0
+          end
+          object FloatAnimation6: TFloatAnimation
+            Duration = 0.200000002980232200
+            PropertyName = 'Position.Y'
+            StartValue = -16.000000000000000000
+            StopValue = -8.000000000000000000
+          end
+          object FloatAnimation7: TFloatAnimation
+            Duration = 0.200000002980232200
+            OnFinish = animSortieMenuFinish
+            PropertyName = 'Position.Y'
+            StartValue = -8.000000000000000000
+            StopValue = -16.000000000000000000
+          end
+          object ShadowEffect6: TShadowEffect
+            Distance = 3.000000000000000000
+            Direction = 45.000000000000000000
+            Softness = 0.300000011920929000
+            Opacity = 0.600000023841857900
+            ShadowColor = claWhite
+            Enabled = False
+          end
+        end
+      end
+    end
+  end
+  object FlowLayout2: TFlowLayout
+    Align = Top
+    Position.Y = 188.000000000000000000
+    Size.Width = 782.000000000000000000
+    Size.Height = 188.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Justify = Center
+    JustifyLastLine = Justify
+    FlowDirection = LeftToRight
+    object Rectangle3: TRectangle
+      Margins.Left = 10.000000000000000000
+      Margins.Right = 10.000000000000000000
+      Position.X = 10.000000000000000000
+      Size.Width = 220.000000000000000000
+      Size.Height = 180.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Thickness = 0.000000000000000000
+      XRadius = 5.000000000000000000
+      YRadius = 5.000000000000000000
+      object ColorAnimation3: TColorAnimation
+        StyleName = 'COLOR-CHANGE'
+        AnimationType = Out
+        Duration = 0.500000000000000000
+        Interpolation = Sinusoidal
+        PropertyName = 'Fill.Color'
+        StartValue = xFFE0E0E0
+        StopValue = claGray
+        Trigger = 'IsMouseOver=true'
+        TriggerInverse = 'IsMouseOver=false'
+      end
+      object ShadowEffect3: TShadowEffect
+        Distance = 3.000000000000000000
+        Direction = 90.000000000000000000
+        Softness = 0.600000023841857900
+        Opacity = 0.600000023841857900
+        ShadowColor = claBlack
+        Trigger = 'IsMouseOver=true'
+        Enabled = False
+      end
+      object FloatAnimation3: TFloatAnimation
+        Duration = 0.200000002980232200
+        PropertyName = 'Width'
+        StartValue = 220.000000000000000000
+        StopValue = 240.000000000000000000
+      end
+      object VertScrollBox3: TVertScrollBox
+        Align = Client
+        HitTest = False
+        Size.Width = 220.000000000000000000
+        Size.Height = 180.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Viewport.Width = 220.000000000000000000
+        Viewport.Height = 180.000000000000000000
+      end
+    end
+    object Rectangle4: TRectangle
+      Margins.Left = 10.000000000000000000
+      Margins.Right = 10.000000000000000000
+      Position.X = 281.000000000000000000
+      Size.Width = 220.000000000000000000
+      Size.Height = 180.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Thickness = 0.000000000000000000
+      XRadius = 5.000000000000000000
+      YRadius = 5.000000000000000000
+      object ColorAnimation4: TColorAnimation
+        StyleName = 'COLOR-CHANGE'
+        AnimationType = Out
+        Duration = 0.500000000000000000
+        Interpolation = Sinusoidal
+        PropertyName = 'Fill.Color'
+        StartValue = xFFE0E0E0
+        StopValue = claGray
+        Trigger = 'IsMouseOver=true'
+        TriggerInverse = 'IsMouseOver=false'
+      end
+      object ShadowEffect4: TShadowEffect
+        Distance = 3.000000000000000000
+        Direction = 90.000000000000000000
+        Softness = 0.600000023841857900
+        Opacity = 0.600000023841857900
+        ShadowColor = claBlack
+        Trigger = 'IsMouseOver=true'
+        Enabled = False
+      end
+      object FloatAnimation4: TFloatAnimation
+        Duration = 0.200000002980232200
+        PropertyName = 'Width'
+        StartValue = 220.000000000000000000
+        StopValue = 240.000000000000000000
+      end
+      object VertScrollBox4: TVertScrollBox
+        Align = Client
+        HitTest = False
+        Size.Width = 220.000000000000000000
+        Size.Height = 180.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Viewport.Width = 220.000000000000000000
+        Viewport.Height = 180.000000000000000000
+      end
+    end
+    object Rectangle5: TRectangle
+      Margins.Left = 10.000000000000000000
+      Margins.Right = 10.000000000000000000
+      Position.X = 552.000000000000000000
+      Size.Width = 220.000000000000000000
+      Size.Height = 180.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Thickness = 0.000000000000000000
+      XRadius = 5.000000000000000000
+      YRadius = 5.000000000000000000
+      object ColorAnimation5: TColorAnimation
+        StyleName = 'COLOR-CHANGE'
+        AnimationType = Out
+        Duration = 0.500000000000000000
+        Interpolation = Sinusoidal
+        PropertyName = 'Fill.Color'
+        StartValue = xFFE0E0E0
+        StopValue = claGray
+        Trigger = 'IsMouseOver=true'
+        TriggerInverse = 'IsMouseOver=false'
+      end
+      object ShadowEffect5: TShadowEffect
+        Distance = 3.000000000000000000
+        Direction = 90.000000000000000000
+        Softness = 0.600000023841857900
+        Opacity = 0.600000023841857900
+        ShadowColor = claBlack
+        Trigger = 'IsMouseOver=true'
+        Enabled = False
+      end
+      object FloatAnimation5: TFloatAnimation
+        Duration = 0.200000002980232200
+        PropertyName = 'Width'
+        StartValue = 220.000000000000000000
+        StopValue = 240.000000000000000000
+      end
+      object VertScrollBox5: TVertScrollBox
+        Align = Client
+        HitTest = False
+        Size.Width = 220.000000000000000000
+        Size.Height = 180.000000000000000000
+        Size.PlatformDefault = False
+        TabOrder = 0
+        Viewport.Width = 220.000000000000000000
+        Viewport.Height = 180.000000000000000000
+      end
+    end
+  end
+end

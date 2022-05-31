@@ -1,0 +1,41 @@
+object elementlisteCrit: TelementlisteCrit
+  Align = Top
+  Size.Width = 143.000000000000000000
+  Size.Height = 32.000000000000000000
+  Size.PlatformDefault = False
+  object rectElementCrit: TRectangle
+    Align = Client
+    Cursor = crHandPoint
+    Fill.Color = claCornsilk
+    Size.Width = 143.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Thickness = 0.000000000000000000
+    object nomCritere: TLabel
+      Align = Client
+      StyledSettings = [Style, FontColor]
+      Margins.Left = 3.000000000000000000
+      Size.Width = 140.000000000000000000
+      Size.Height = 30.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 14.000000000000000000
+      Text = 'Crit'#232're'
+      TabOrder = 0
+    end
+    object Line1: TLine
+      Align = Bottom
+      LineType = Bottom
+      Opacity = 0.500000000000000000
+      Margins.Left = 25.000000000000000000
+      Margins.Right = 25.000000000000000000
+      Margins.Bottom = 1.000000000000000000
+      Position.X = 25.000000000000000000
+      Position.Y = 30.000000000000000000
+      Size.Width = 93.000000000000000000
+      Size.Height = 1.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Thickness = 2.000000000000000000
+    end
+  end
+end

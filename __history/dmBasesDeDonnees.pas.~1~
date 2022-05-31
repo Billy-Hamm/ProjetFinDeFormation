@@ -1,0 +1,25 @@
+unit dmBasesDeDonnees;
+
+interface
+
+uses
+  System.SysUtils, System.Classes;
+
+type
+  TbasesDeDonnees = class(TDataModule)
+  private
+    { Déclarations privées }
+  public
+    { Déclarations publiques }
+  end;
+
+var
+  basesDeDonnees: TbasesDeDonnees;
+
+implementation
+
+{%CLASSGROUP 'FMX.Controls.TControl'}
+
+{$R *.dfm}
+
+end.

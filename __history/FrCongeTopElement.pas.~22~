@@ -1,0 +1,39 @@
+unit FrCongeTopElement;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+  FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
+  FMX.Objects, FMX.Controls.Presentation;
+
+type
+  TcongeTopElement = class(TFrame)
+    titreConge: TLabel;
+    Rectangle1: TRectangle;
+    procedure Rectangle1MouseEnter(Sender: TObject);
+    procedure Rectangle1MouseLeave(Sender: TObject);
+  private
+    { Déclarations privées }
+  public
+    { Déclarations publiques }
+  end;
+
+implementation
+
+{$R *.fmx}
+  Var ClRecDft : TColor; //cela nous permettera de changer la couleur du rectangle en conception sans la changer en code(plus de fléxibilitè).
+      ClTxtDft : Tcolor;
+procedure TcongeTopElement.Rectangle1MouseEnter(Sender: TObject);
+begin
+  ClRecDft := Rectangle1.Fill.Color;  //pour Enregistrer la couleur que nos avons definie.
+  Rectangle1.Fill.Color := ($FF3D7C4A); //Assigner une nouvelle couleur à l'entrée de la souris.
+end;
+
+procedure TcongeTopElement.Rectangle1MouseLeave(Sender: TObject);
+begin
+  Rectangle1.Fill.Color :=  ClRecDft;
+  //Rectangle1.Fill.Color := ($FFE0E0E0); //ce code là restreint un peu les possibilités et limite l'utilisateur, c'est pour ça qu'il vaut mieux definir une couleur par defaut(CouleurDef) vers la quelle retourner.
+end;
+
+end.

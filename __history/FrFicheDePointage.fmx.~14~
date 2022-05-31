@@ -1,0 +1,380 @@
+object ficheDePointage: TficheDePointage
+  Align = Top
+  Size.Width = 782.000000000000000000
+  Size.Height = 376.000000000000000000
+  Size.PlatformDefault = False
+  object titreListeEmploye: TRectangle
+    Align = Top
+    Size.Width = 782.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Thickness = 0.000000000000000000
+    object Label13: TLabel
+      Anchors = [akLeft]
+      StyledSettings = []
+      Position.X = 17.000000000000000000
+      Position.Y = 10.000000000000000000
+      Size.Width = 49.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00050000000000000004000000}
+      TextSettings.FontColor = xFF4E4E50
+      Text = 'Avatar'
+      TabOrder = 0
+    end
+    object nomEmploye: TLabel
+      StyledSettings = []
+      Position.X = 82.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 115.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00050000000000000004000000}
+      TextSettings.FontColor = xFF4E4E50
+      Text = 'Nom et pr'#233'nom'
+      TabOrder = 1
+    end
+    object posteEmploye: TLabel
+      StyledSettings = []
+      Position.X = 289.000000000000000000
+      Position.Y = 9.000000000000000000
+      Size.Width = 54.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00050000000000000004000000}
+      TextSettings.FontColor = xFF4E4E50
+      Text = 'Retard'
+      TabOrder = 2
+    end
+    object performanceEmploye: TLabel
+      StyledSettings = []
+      Position.X = 348.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 93.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00050000000000000004000000}
+      TextSettings.FontColor = xFF4E4E50
+      Text = 'H. Arriv'#233'e'
+      TabOrder = 3
+    end
+    object identifiant: TLabel
+      StyledSettings = []
+      Position.X = 217.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 56.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00050000000000000004000000}
+      TextSettings.FontColor = xFF4E4E50
+      Text = 'statut'
+      TabOrder = 4
+    end
+    object Label3: TLabel
+      StyledSettings = []
+      Position.X = 631.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00050000000000000004000000}
+      TextSettings.FontColor = xFF4E4E50
+      Text = 'H. Supp'
+      TabOrder = 5
+    end
+    object Label2: TLabel
+      StyledSettings = []
+      Position.X = 529.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 96.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00050000000000000004000000}
+      TextSettings.FontColor = xFF4E4E50
+      Text = 'Jr. Compl'#232'te'
+      TabOrder = 6
+    end
+    object Label1: TLabel
+      StyledSettings = []
+      Position.X = 437.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 80.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00050000000000000004000000}
+      TextSettings.FontColor = xFF4E4E50
+      Text = 'H. D'#233'part'
+      TabOrder = 7
+    end
+    object btnConfirme: TLayout
+      Position.X = 740.000000000000000000
+      Position.Y = -4.000000000000000000
+      Size.Width = 33.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 8
+      object valFdp: TCircle
+        Fill.Color = claGreen
+        Position.X = 8.000000000000000000
+        Position.Y = 7.000000000000000000
+        Size.Width = 25.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Thickness = 0.000000000000000000
+        object Line1: TLine
+          Locked = True
+          LineType = Diagonal
+          Position.X = 3.000000000000000000
+          Position.Y = 14.000000000000000000
+          RotationAngle = 45.000000000000000000
+          Size.Width = 8.000000000000000000
+          Size.Height = 1.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = xFFE0E0E0
+          Stroke.Thickness = 3.000000000000000000
+        end
+        object Line2: TLine
+          Locked = True
+          LineType = Diagonal
+          Position.X = 6.000000000000000000
+          Position.Y = 13.000000000000000000
+          RotationAngle = -40.000000000000000000
+          Size.Width = 16.000000000000000000
+          Size.Height = 1.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = xFFE0E0E0
+          Stroke.Thickness = 3.000000000000000000
+        end
+      end
+    end
+    object Rectangle1: TRectangle
+      Position.X = 699.000000000000000000
+      Position.Y = 5.000000000000000000
+      Size.Width = 23.000000000000000000
+      Size.Height = 26.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Thickness = 0.000000000000000000
+      object Line4: TLine
+        LineType = Diagonal
+        Position.X = 6.000000000000000000
+        Position.Y = 9.000000000000000000
+        RotationAngle = -150.000000000000000000
+        Size.Width = 12.000000000000000000
+        Size.Height = 1.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Color = xFF4E4E50
+        Stroke.Thickness = 2.000000000000000000
+      end
+      object Line3: TLine
+        LineType = Diagonal
+        Position.X = 6.000000000000000000
+        Position.Y = 14.000000000000000000
+        RotationAngle = -210.000000000000000000
+        Size.Width = 12.000000000000000000
+        Size.Height = 1.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Color = xFF4E4E50
+        Stroke.Thickness = 2.000000000000000000
+      end
+    end
+  end
+  object titreHeureSup: TRectangle
+    Margins.Top = 10.000000000000000000
+    Size.Width = 782.000000000000000000
+    Size.Height = 32.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Thickness = 0.000000000000000000
+    Visible = False
+    object Label4: TLabel
+      Anchors = [akLeft]
+      StyledSettings = []
+      Position.X = 17.000000000000000000
+      Position.Y = 10.000000000000000000
+      Size.Width = 49.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00050000000000000004000000}
+      TextSettings.FontColor = xFF4E4E50
+      Text = 'Avatar'
+      TabOrder = 0
+    end
+    object Label5: TLabel
+      StyledSettings = []
+      Position.X = 82.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 115.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00050000000000000004000000}
+      TextSettings.FontColor = xFF4E4E50
+      Text = 'Nom et pr'#233'nom'
+      TabOrder = 1
+    end
+    object Label6: TLabel
+      StyledSettings = []
+      Position.X = 294.000000000000000000
+      Position.Y = 9.000000000000000000
+      Size.Width = 88.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00050000000000000004000000}
+      TextSettings.FontColor = xFF4E4E50
+      Text = 'Heure(s) Sup'
+      TabOrder = 2
+    end
+    object Label7: TLabel
+      StyledSettings = []
+      Position.X = 394.000000000000000000
+      Position.Y = 10.000000000000000000
+      Size.Width = 45.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00050000000000000004000000}
+      TextSettings.FontColor = xFF4E4E50
+      Text = '150 %'
+      TabOrder = 3
+    end
+    object Label8: TLabel
+      StyledSettings = []
+      Position.X = 217.000000000000000000
+      Position.Y = 8.000000000000000000
+      Size.Width = 56.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00050000000000000004000000}
+      TextSettings.FontColor = xFF4E4E50
+      Text = 'statut'
+      TabOrder = 4
+    end
+    object Label9: TLabel
+      StyledSettings = []
+      Position.X = 588.000000000000000000
+      Position.Y = 9.000000000000000000
+      Size.Width = 63.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00050000000000000004000000}
+      TextSettings.FontColor = xFF4E4E50
+      Text = 'R'#233'cup'
+      TabOrder = 5
+    end
+    object Label10: TLabel
+      StyledSettings = []
+      Position.X = 507.000000000000000000
+      Position.Y = 9.000000000000000000
+      Size.Width = 64.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00050000000000000004000000}
+      TextSettings.FontColor = xFF4E4E50
+      Text = 'A R'#233'cup'
+      TabOrder = 6
+    end
+    object Label11: TLabel
+      StyledSettings = []
+      Position.X = 449.000000000000000000
+      Position.Y = 10.000000000000000000
+      Size.Width = 52.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00050000000000000004000000}
+      TextSettings.FontColor = xFF4E4E50
+      Text = '200 %'
+      TabOrder = 7
+    end
+    object Layout1: TLayout
+      Position.X = 740.000000000000000000
+      Position.Y = -4.000000000000000000
+      Size.Width = 33.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 8
+      object Circle1: TCircle
+        Fill.Color = claGreen
+        Position.X = 8.000000000000000000
+        Position.Y = 7.000000000000000000
+        Size.Width = 25.000000000000000000
+        Size.Height = 25.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Thickness = 0.000000000000000000
+        object Line5: TLine
+          LineType = Diagonal
+          Position.X = 3.000000000000000000
+          Position.Y = 14.000000000000000000
+          RotationAngle = 45.000000000000000000
+          Size.Width = 8.000000000000000000
+          Size.Height = 1.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = xFFE0E0E0
+          Stroke.Thickness = 3.000000000000000000
+        end
+        object Line6: TLine
+          LineType = Diagonal
+          Position.X = 6.000000000000000000
+          Position.Y = 13.000000000000000000
+          RotationAngle = -40.000000000000000000
+          Size.Width = 16.000000000000000000
+          Size.Height = 1.000000000000000000
+          Size.PlatformDefault = False
+          Stroke.Color = xFFE0E0E0
+          Stroke.Thickness = 3.000000000000000000
+        end
+      end
+    end
+    object Label12: TLabel
+      StyledSettings = []
+      Position.X = 675.000000000000000000
+      Position.Y = 9.000000000000000000
+      Size.Width = 42.000000000000000000
+      Size.Height = 17.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Family = 'Roboto'
+      TextSettings.Font.Size = 14.000000000000000000
+      TextSettings.Font.StyleExt = {00050000000000000004000000}
+      TextSettings.FontColor = xFF4E4E50
+      Text = 'Obs'
+      TabOrder = 9
+    end
+  end
+  object VertScrollBox1: TVertScrollBox
+    Position.Y = 32.000000000000000000
+    Size.Width = 782.000000000000000000
+    Size.Height = 345.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Viewport.Width = 782.000000000000000000
+    Viewport.Height = 345.000000000000000000
+  end
+end

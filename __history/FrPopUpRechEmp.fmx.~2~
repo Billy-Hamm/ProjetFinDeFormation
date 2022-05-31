@@ -1,0 +1,28 @@
+object PopUpRechEmp: TPopUpRechEmp
+  Size.Width = 493.000000000000000000
+  Size.Height = 200.000000000000000000
+  Size.PlatformDefault = False
+  object Rectangle1: TRectangle
+    Align = Client
+    Size.Width = 493.000000000000000000
+    Size.Height = 200.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Thickness = 0.000000000000000000
+    XRadius = 5.000000000000000000
+    YRadius = 5.000000000000000000
+    object VertScrollBox1: TVertScrollBox
+      Align = Client
+      Size.Width = 493.000000000000000000
+      Size.Height = 200.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Viewport.Width = 493.000000000000000000
+      Viewport.Height = 200.000000000000000000
+    end
+  end
+  inline input1: TFrame
+    Size.Width = 154.000000000000000000
+    Size.Height = 37.000000000000000000
+    Size.PlatformDefault = False
+  end
+end

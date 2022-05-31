@@ -1,0 +1,109 @@
+unit varGlobale;
+
+interface
+
+uses System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+FMX.Graphics, FMX.Objects,FrFiltreElement, logiqueEmploye, logiqueEvaluation, logiqueConge, logiqueAbsence;
+
+
+// Dans cette fonction on passe le conteneur de l'image
+// et le nom de l'image à charger depuis les ressouces
+procedure ChargerImageRessources (image: TImage; nom : string);
+
+// procédure à donner à ElementNav
+procedure ajouterElement (routeActuelle : string);
+procedure retirerElement (routeAncienne: string);
+procedure creeEnsembleElements();
+
+// Pour le responsive
+procedure responsive ();
+
+var
+ {
+  On déclare "res" et "img" ici et non dans procédure qui l'utilise
+  (ChargerImageRessouces) pour qu'elles soient déclaré de façon globale
+  pour résoudre le warning qui disais que les variables ne sont pas
+  initialisé. Le problème est que les variables locales ne sont pas
+  par défaut initialisé chose qui n'est pas le cas pour les variables
+  globales
+  }
+  res : TResourceStream;
+  img : TBitmap;
+
+  CheminAcutuel : string;
+
+implementation
+
+procedure ChargerImageRessources (image: TImage; nom : string);
+
+
+begin
+    try
+    // On charge notre "image" qui n'est pas encore une image mais un simple flux
+      res := TResourceStream.Create(HInstance, nom, RT_RCDATA);
+      try
+      // On cree une image pour convertir notre flux (stream) en image
+        img := TBitmap.Create;
+        img.LoadFromStream(res);
+        // Une fois notre ressource convertie en image, on l'injecte dans notre TImage
+        image.MultiResBitmap.Items[0].Bitmap.LoadFromStream(res);
+      finally
+        img.Free;
+      end;
+    finally
+      res.Free;
+    end;
+end;
+
+
+procedure ajouterElement (routeActuelle : string);
+begin
+  CheminAcutuel := routeActuelle;
+  // Pour retirer le fitre derrière
+  { Ici, je peux bien utiliser la fonction de destruction du filtre mais
+  Je n'utilise pas parce que ça va demander une certaine couche de
+  complexité par trop utile
+  }
+  if getIntervalle () then
+     retireFiltre ();
+
+   if routeActuelle = 'Employés' then
+    ajouterEnsembleElementsEmploye ();
+
+   if routeActuelle = 'Evaluations' then
+    ajouterEnsembleElementsEmployeEval ();
+
+   if routeActuelle = 'Congés' then
+    ajouterEnsembleElementsEmployeConge ();
+   if routeActuelle = 'Absences' then
+   end;
+
+
+procedure retirerElement (routeAncienne: string);
+begin
+
+  if routeAncienne = 'Employés' then
+    retirerEnsembleElementEmploye ();
+
+  if routeAncienne = 'Evaluations' then
+    retirerEnsembleElementEmployeEval ();
+
+  if routeAncienne = 'Congés' then
+    retirerEnsembleElementEmployeConge ();
+end;
+
+procedure creeEnsembleElements();
+begin
+CheminAcutuel := '';
+  initialisationEval ();
+  initialisationEmploye ();
+  initialisationConge ();
+end;
+
+// Pour le responsive
+procedure responsive ();
+begin
+  responsiveEmploye(CheminAcutuel);
+end;
+
+end.

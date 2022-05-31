@@ -1,0 +1,57 @@
+unit recherchePopupEmp;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
+  FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
+  FMX.Objects, FMX.Controls.Presentation, FMX.Edit, FMX.Layouts, FMX.Ani;
+
+type
+  TFrRecherchePopupEmp = class(TFrame)
+    Rectangle1: TRectangle;
+    LayoutTop: TLayout;
+    EditG: TEdit;
+    EditD: TEdit;
+    LabelG: TLabel;
+    LineG: TLine;
+    LabelD: TLabel;
+    LineD: TLine;
+    AnimIn: TFloatAnimation;
+    AnimOut: TFloatAnimation;
+    procedure EditGMouseEnter(Sender: TObject);
+    procedure EditGMouseLeave(Sender: TObject);
+    procedure AnimInProcess(Sender: TObject);
+
+  private
+    { Déclarations privées }
+  public
+  Var LblClDef : TAlphaColor;
+      LblTlDef : Single;
+    { Déclarations publiques }
+  end;
+
+implementation
+
+{$R *.fmx}
+
+procedure TFrRecherchePopupEmp.AnimInProcess(Sender: TObject);
+begin
+  LabelG.Opacity := 0.3;
+end;
+
+procedure TFrRecherchePopupEmp.EditGMouseEnter(Sender: TObject);
+begin
+  AnimIn.enabled := true;
+  AnimOut.enabled := false;
+
+end;
+
+procedure TFrRecherchePopupEmp.EditGMouseLeave(Sender: TObject);
+begin
+  Animin.enabled := false;
+  AnimOut.enabled := true;
+  LabelG.Opacity := 1;
+end;
+
+end.

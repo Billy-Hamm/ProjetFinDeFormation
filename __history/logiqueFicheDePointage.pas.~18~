@@ -1,0 +1,338 @@
+unit logiqueFicheDePointage;
+
+interface
+
+uses System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants,
+FMX.Graphics, FMX.Objects, FMX.Ani,  FMX.Dialogs, Data.DB, Data.Win.ADODB,
+FrTopElementFichePointage,FrFicheDePointage, dmBasesDeDonnees, logiquePartager,
+FrEmployeMaquetteFdp;
+
+//types
+type
+    FicheDePointageHerite = class (TficheDePointage)
+
+      private
+       procedure clicValidationFdp (Sender : TObject);
+//       procedure clicValidationHeureSupFpd (Sender : TObject);
+      public
+
+    end;
+
+// Procedures et fonctions
+  //procedure générique
+   procedure recupererDonneesFdp ();
+
+  // Procedrue de creation
+   procedure initialisationFdp ();
+   procedure creerTopElementFdp ();
+   procedure creerConteneurFdp ();
+   procedure creerElementFdp ();
+//   procedure creerEnsembleElementFdp ();
+procedure recupererEmpDejaPointerFdp ();
+procedure recupererEmpPasPointer();
+
+
+
+// Variables
+var
+   topElementFdp : TtopElementFdp;
+   conteneurFdp : FicheDePointageHerite;
+   nombreEmployeFdp : integer;
+   empPasPointer : array of string;
+   empPointerFdp : array of string;
+   empPointerDHS : array of string;
+   LesEmployeFdp : array of TemployeMaquetteFdp;
+   tabRenvoyerParValidationPointage : tabElementPointage;
+   unEmployeFdp : TemployeMaquetteFdp;
+   sentinelleFdp : Boolean;
+   adoRep :  TADOQuery;
+   procEmpPasPointer : TADOStoredProc;
+
+   nbEmpPointerFdp, nbEmpPointerDHS : integer;
+
+   nbEleRecupFdpPasPointer, nbEleRecupFdpPointer , nbEleRecupDHS : integer;
+
+
+implementation
+uses Principale;
+
+procedure initialisationFdp ();
+begin
+   sentinelleFdp := True;
+   adoRep := basesDeDonnees.ADOQuery1;
+end;
+
+procedure creerTopElementFdp ();
+begin
+  topElementFdp := TtopElementFdp.Create(Pprincipale);
+  topElementFdp.ajoutTempsHeure();
+end;
+
+
+
+procedure recupererDonneesFdp ();
+var
+   j : integer;
+begin
+     j := 0 ;
+// Ici "nombreEmpPointer" n'est pas une table mais une vue (view) qui se trouve sur le server (BDD)
+   ExeRequeteSqlServer('SELECT * FROM nombreEmpPointerFdp');
+   nbEmpPointerFdp := adoRep.Fields[0].AsInteger;
+
+
+   if nbEmpPointerFdp = 0 then
+     begin
+        recupererEmpPasPointer();
+     end
+      else
+       begin
+         recupererEmpDejaPointerFdp ();
+         recupererEmpPasPointer();
+       end;
+
+
+
+end;
+
+
+procedure recupererEmpPasPointer();
+var j : integer;
+    nbEleRecup : integer;
+begin
+j := 0;
+nbEleRecupFdpPasPointer := 3;
+// Exécution de la procédure stockée
+procEmpPasPointer.ExecProc;
+
+// recupération des élément renvoyés par la procédure
+procEmpPasPointer.First;
+ while not procEmpPasPointer.Eof do
+   begin
+     SetLength(empPasPointer, Length(empPasPointer) + nbEleRecupFdpPasPointer);
+//     idPP (id personne) me servira à nommer chaque employéMaquetteFdp
+       empPasPointer[j] := procEmpPasPointer.FieldByName('idPP').AsString;
+       j := j + 1;
+       empPasPointer[j] := procEmpPasPointer.FieldByName('nomPP').AsString;
+       j := j + 1;
+       empPasPointer[j] := procEmpPasPointer.FieldByName('prenomPP').AsString;
+       j := j + 1;
+        if empPasPointer[0] = '' then
+            break;
+     procEmpPasPointer.Next;
+   end;
+
+end;
+
+
+procedure recupererEmpDejaPointerFdp ();
+var j : integer;
+begin
+j := 0;
+nbEleRecupFdpPointer := 9;
+
+   ExeRequeteSqlServer('SELECT * FROM empDejaPointer');
+   // On récupère les informations de chaque employé
+   adoRep.First;
+   while not adoRep.Eof do
+     begin
+       SetLength(empPointerFdp, Length(empPointerFdp) + nbEleRecupFdpPointer);
+//     idPP (id personne) me servira à nommer chaque employéMaquetteFdp
+       empPointerFdp[j] := adoRep.FieldByName('id_ce').AsString;
+       j := j + 1;
+       empPointerFdp[j] := adoRep.FieldByName('nom_pers').AsString;
+       j := j + 1;
+       empPointerFdp[j] := adoRep.FieldByName('pre_pers').AsString;
+       j := j + 1;
+       empPointerFdp[j] := adoRep.FieldByName('statut').AsString;
+       j := j + 1;
+       empPointerFdp[j] := adoRep.FieldByName('heure_arrive').AsString;
+       j := j + 1;
+       empPointerFdp[j] := adoRep.FieldByName('heure_depart').AsString;
+       j := j + 1;
+       empPointerFdp[j] := adoRep.FieldByName('retard').AsString;
+       j := j + 1;
+       empPointerFdp[j] := adoRep.FieldByName('journe_complete').AsString;
+       j := j + 1;
+       empPointerFdp[j] := adoRep.FieldByName('obs_fdp').AsString;
+       j := j + 1;
+       adoRep.Next;
+     end;
+
+
+
+     ExeRequeteSqlServer('SELECT * FROM nombreEmpPointerDHS');
+     nbEmpPointerDHS := adoRep.Fields[0].AsInteger;
+
+     if nbEmpPointerDHS <> 0 then
+       begin
+       j := 0;
+       nbEleRecupDHS := 7 ;
+
+         ExeRequeteSqlServer('SELECT * FROM empDejaPointerDHS');
+          adoRep.First;
+           while not adoRep.Eof do
+             begin
+               SetLength(empPointerDHS, Length(empPointerDHS) + nbEleRecupDHS);
+        //     id_ce me servira de savoir qui est l'employé qui à effectuer HS
+               empPointerDHS[j] := adoRep.FieldByName('heure_sup').AsString;
+               j := j + 1;
+               empPointerDHS[j] := adoRep.FieldByName('_150').AsString;
+               j := j + 1;
+               empPointerDHS[j] := adoRep.FieldByName('_200').AsString;
+               j := j + 1;
+               empPointerDHS[j] := adoRep.FieldByName('recup').AsString;
+               j := j + 1;
+               empPointerDHS[j] := adoRep.FieldByName('a_recup').AsString;
+               j := j + 1;
+               empPointerDHS[j] := adoRep.FieldByName('obs_dhs').AsString;
+               j := j + 1;
+               empPointerDHS[j] := adoRep.FieldByName('id_ce').AsString;
+               j := j + 1;
+
+               adoRep.Next;
+             end;
+       end;
+
+
+end;
+
+
+
+procedure creerElementFdp ();
+var
+   i,k : integer;
+begin
+k := 0;
+
+   if sentinelleFdp = True then
+    begin
+      recupererDonneesFdp ();
+      sentinelleFdp := False;
+    end;
+
+    if nbEmpPointerFdp = 0 then
+     begin
+        recupererEmpPasPointer();
+     end
+      else
+       begin
+         recupererEmpDejaPointerFdp ();
+         recupererEmpPasPointer();
+       end;
+
+//    SetLength(LesEmployeFdp, nombreEmployeFdp);
+//    for  i := 0 to nombreEmployeFdp-1 do
+//         begin
+//
+//
+//            // Création de la frame puis renommer le name
+//            UnEmployeFdp := TemployeMaquetteFdp.Create(conteneurFdp);
+//            UnEmployeFdp.Name := elemenetPersonneFdp[k];
+//            // Injection de données dans la Frame
+//            UnEmployeFdp.nomEmploye.Text := elemenetPersonneFdp[k+1] + ' ' +
+//            elemenetPersonneFdp[k+2];
+//            // Ici le 3 représente le nombre d'élement à prendre
+//            k := k + 3;
+//            // Stocker les frames dans le tableau pour l'affichage
+//            LesEmployeFdp[i] := UnEmployeFdp;
+//         end;
+end;
+
+
+procedure creerEmpPasPointer ();
+var i,k, tailleTabEmp, tailleTrouve : integer;
+begin
+k := 0;
+tailleTrouve :=  Length(LesEmployeFdp);
+tailleTabEmp := ( Length(empPasPointer) / nbEleRecupFdpPasPointer );
+      if empPasPointer[0] = '' then
+           tailleTabEmp = 0;
+      SetLength(LesEmployeFdp, tailleTrouve + tailleTabEmp );
+
+    for  i := 0 to Length(LesEmployeFdp) -1 do
+         begin
+            // Création de la frame puis renommer le name
+            UnEmployeFdp := TemployeMaquetteFdp.Create(conteneurFdp);
+            UnEmployeFdp.Name := empPasPointer[k];
+             if empPasPointer[0] = '' then
+                break;
+            // Injection de données dans la Frame
+            UnEmployeFdp.nomEmploye.Text := empPasPointer[k+1] + ' ' +
+            empPasPointer[k+2];
+            // nbEleRecupFdpPasPointer = 3
+            k := k + nbEleRecupFdpPasPointer;
+            // Stocker les frames dans le tableau pour l'affichage
+            LesEmployeFdp[tailleTrouve + i] := UnEmployeFdp;
+         end;
+end;
+
+
+procedure creerEmpDejaPointer ();
+var tailleTab, tailleTrouve, i, k : integer;
+begin
+k := 0;
+tailleTab := Length(empPointerFdp) / nbEleRecupFdpPointer ;
+tailleTrouve := Length(LesEmployeFdp);
+  SetLength(LesEmployeFdp, tailleTrouve + tailleTab);
+
+    For i := 0 to Length(LesEmployeFdp)-1 do
+      begin
+          UnEmployeFdp := TemployeMaquetteFdp.Create(conteneurFdp);
+          UnEmployeFdp.Name := empPasPointer[k];
+          // Injection de données dans la Frame
+          UnEmployeFdp.nomEmploye.Text := empPasPointer[k+1] + ' ' +
+          empPasPointer[k+2];
+
+      end;
+
+end;
+
+
+{ Cette fonction va prendre un parametre date, si la date donner est inférieur
+à la du jour, alors la création de employé ne se fera que pour les employé dont on a
+récupérer les informations, si c'est égale, alors, on va créer et les employés dont on
+à récupérer les informations et ceux qui n'ont pas encore des informations et enfin,
+si la date est supérieur à la date du jour, alors on ne va pas créer les employés. }
+
+
+
+procedure creerConteneurFdp ();
+begin
+   conteneurFdp := FicheDePointageHerite.Create(Pprincipale);
+   conteneurFdp.valFdp.OnClick := conteneurFdp.clicValidationFdp;
+end;
+
+procedure FicheDePointageHerite.clicValidationFdp(Sender: TObject);
+var
+i : integer;
+req : string;
+begin
+  for i := 0 to nombreEmployeFdp-1 do
+    begin
+      if LesEmployeFdp[i].selection = True then
+        begin
+        { Au lieu de construire cette requette ici, on va créer un fonction au niveau de la
+         BDD avec des variable pour des vérification d'erreure }
+          tabRenvoyerParValidationPointage := LesEmployeFdp[i].validationPointage();
+           if Length(tabRenvoyerParValidationPointage) >= 2 then
+            begin
+              req := 'INSERT INTO FICHE_POINTAGE ' +
+              'date_jour,statut,heure_arrive,heure_depart,retard,journe_complete,obs_fdp,id_ce' +
+              'VALUES' +
+              '( getDate()' + ',' + tabRenvoyerParValidationPointage [0] + ',' +
+              tabRenvoyerParValidationPointage [1] + ',' + tabRenvoyerParValidationPointage [2] +
+              tabRenvoyerParValidationPointage [3] + ',' + tabRenvoyerParValidationPointage [4] +
+              tabRenvoyerParValidationPointage [5] + ',' + LesEmployeFdp[i].Name + ' )';
+            end
+            else
+              begin
+                ShowMessage(tabRenvoyerParValidationPointage[0]);
+              end;
+        end;
+    end;
+end;
+
+
+
+
+end.

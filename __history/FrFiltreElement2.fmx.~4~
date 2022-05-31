@@ -1,0 +1,16 @@
+object FiltreElement2: TFiltreElement2
+  Size.Width = 160.000000000000000000
+  Size.Height = 184.000000000000000000
+  Size.PlatformDefault = False
+  object CalloutRectangle1: TCalloutRectangle
+    Align = Client
+    Fill.Color = xFFF3EBEB
+    Size.Width = 160.000000000000000000
+    Size.Height = 184.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Thickness = 0.000000000000000000
+    CalloutWidth = 23.000000000000000000
+    CalloutLength = 20.000000000000000000
+    CalloutOffset = 120.000000000000000000
+  end
+end

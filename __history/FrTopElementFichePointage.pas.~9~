@@ -1,0 +1,33 @@
+unit FrTopElementFichePointage;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
+  FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
+  FMX.Layouts, FMX.Controls.Presentation, FMX.Objects, FrTempsHeureTopElement;
+
+type
+  TtopElementFdp = class(TFrame)
+    boutonValidation: TRectangle;
+    Label1: TLabel;
+    conteneurTopTemps: TLayout;
+    posisTop: TCircle;
+    Line1: TLine;
+    Line2: TLine;
+    posisDroite: TRectangle;
+    posisGauche: TRectangle;
+    Line3: TLine;
+    Line4: TLine;
+    changePosis: TCircle;
+  private
+    { Déclarations privées }
+  public
+    { Déclarations publiques }
+  end;
+
+implementation
+
+{$R *.fmx}
+
+end.

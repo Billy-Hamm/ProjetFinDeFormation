@@ -1,0 +1,5 @@
+object topElementFdp: TtopElementFdp
+  Size.Width = 554.000000000000000000
+  Size.Height = 59.000000000000000000
+  Size.PlatformDefault = False
+end

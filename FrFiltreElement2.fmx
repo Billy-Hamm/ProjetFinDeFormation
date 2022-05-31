@@ -1,0 +1,66 @@
+object FiltreElement2: TFiltreElement2
+  Size.Width = 160.000000000000000000
+  Size.Height = 184.000000000000000000
+  Size.PlatformDefault = False
+  object CalloutRectangle1: TCalloutRectangle
+    Align = Client
+    Fill.Color = xFF4A7AA9
+    Size.Width = 160.000000000000000000
+    Size.Height = 184.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Color = claWhite
+    Stroke.Thickness = 3.000000000000000000
+    Stroke.Dash = DashDotDot
+    Stroke.Join = Round
+    CalloutWidth = 23.000000000000000000
+    CalloutLength = 20.000000000000000000
+    CalloutOffset = 127.000000000000000000
+    object body: TVertScrollBox
+      Align = Bottom
+      Position.Y = 52.000000000000000000
+      Size.Width = 160.000000000000000000
+      Size.Height = 132.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      Viewport.Width = 160.000000000000000000
+      Viewport.Height = 132.000000000000000000
+    end
+    object Layout1: TLayout
+      Align = Top
+      Margins.Top = 20.000000000000000000
+      Position.Y = 20.000000000000000000
+      Size.Width = 160.000000000000000000
+      Size.Height = 33.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 1
+      object val: TRectangle
+        Align = Right
+        Fill.Color = xFF84D766
+        Margins.Left = 5.000000000000000000
+        Margins.Top = 5.000000000000000000
+        Margins.Right = 5.000000000000000000
+        Margins.Bottom = 5.000000000000000000
+        Position.X = 122.000000000000000000
+        Position.Y = 5.000000000000000000
+        Size.Width = 33.000000000000000000
+        Size.Height = 21.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Thickness = 0.000000000000000000
+        XRadius = 5.000000000000000000
+        YRadius = 5.000000000000000000
+      end
+      object Line1: TLine
+        Align = Bottom
+        LineType = Bottom
+        Margins.Left = 10.000000000000000000
+        Margins.Right = 10.000000000000000000
+        Position.X = 10.000000000000000000
+        Position.Y = 31.000000000000000000
+        Size.Width = 140.000000000000000000
+        Size.Height = 2.000000000000000000
+        Size.PlatformDefault = False
+        Stroke.Thickness = 1.399999976158142000
+      end
+    end
+  end
+end

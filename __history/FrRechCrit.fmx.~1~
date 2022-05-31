@@ -1,0 +1,5 @@
+object RechCrit: TRechCrit
+  Size.Width = 465.000000000000000000
+  Size.Height = 194.000000000000000000
+  Size.PlatformDefault = False
+end

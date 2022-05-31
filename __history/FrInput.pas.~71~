@@ -1,0 +1,88 @@
+unit FrInput;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
+  FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
+  FMX.Objects, FMX.Ani, FMX.Edit, FMX.Controls.Presentation;
+
+type
+  Tinput = class(TFrame)
+    Line8: TLine;
+    textes: TLabel;
+    Edit1: TEdit;
+    posAnim: TFloatAnimation;
+    posAnimInvers: TFloatAnimation;
+    procedure posAnimFinish(Sender: TObject);
+    procedure posAnimInversFinish(Sender: TObject);
+    procedure Edit1Enter(Sender: TObject);
+    procedure Edit1Exit(Sender: TObject);
+    procedure Edit1KeyDown(Sender: TObject; var Key: Word; var KeyChar: Char;
+      Shift: TShiftState);
+  private
+    { Déclarations privées }
+  public
+    { Déclarations publiques }
+  end;
+
+implementation
+
+{$R *.fmx}
+
+uses Principale;
+
+procedure Tinput.Edit1Enter(Sender: TObject);
+begin
+  textes.StyledSettings := textes.StyledSettings - [TStyledSetting.FontColor]; //permet de decocher "StyledSettings..FontColor" pour permettre la modifiaction a la Runtime
+  Edit1.TextPrompt := '';
+  if Edit1.Text = '' then
+    begin
+      posAnim.Enabled := True;
+      textes.FontColor :=TAlphaColorRec.Green;
+      line8.Stroke.Color := TAlphacolors.Green;
+      textes.Font.Size := 10;
+      textes.Opacity := 0.7;
+    end;
+
+end;
+
+procedure Tinput.Edit1Exit(Sender: TObject);
+begin
+  if Edit1.Text = '' then
+    begin
+      posAnimInvers.Enabled := false;
+      textes.FontColor:= Talphacolors.red;
+      line8.Stroke.Color := TAlphacolors.red;
+      textes.Font.Size := 10;
+      Edit1.TextPrompt := 'Champ Vide';
+    end
+      else
+      begin
+        textes.FontColor := TAlphaColors.green;
+        Line8.Stroke.Color:= TAlphacolors.green;
+        textes.Font.Size := 10;
+        Edit1.TextPrompt := ''
+      end;
+
+
+end;
+
+procedure Tinput.Edit1KeyDown(Sender: TObject; var Key: Word; var KeyChar: Char;
+  Shift: TShiftState);
+begin
+    if key = 13 then
+      Pprincipale.LayoutPopup.Visible := false;
+end;
+
+procedure Tinput.posAnimFinish(Sender: TObject);
+begin
+  posAnim.Enabled := False;
+end;
+
+procedure Tinput.posAnimInversFinish(Sender: TObject);
+begin
+  posAnimInvers.Enabled := False;
+end;
+
+end.

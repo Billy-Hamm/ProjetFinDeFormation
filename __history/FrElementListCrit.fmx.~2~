@@ -1,0 +1,13 @@
+object listeCrit: TlisteCrit
+  Size.Width = 143.000000000000000000
+  Size.Height = 34.000000000000000000
+  Size.PlatformDefault = False
+  object Rectangle1: TRectangle
+    Align = Client
+    Fill.Color = claWhite
+    Size.Width = 143.000000000000000000
+    Size.Height = 34.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Thickness = 0.000000000000000000
+  end
+end

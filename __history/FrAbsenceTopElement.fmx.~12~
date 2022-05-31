@@ -1,0 +1,63 @@
+object absenceTopElement: TabsenceTopElement
+  Align = Client
+  HitTest = False
+  Size.Width = 553.000000000000000000
+  Size.Height = 72.000000000000000000
+  Size.PlatformDefault = False
+  object Layout1: TLayout
+    Align = Right
+    Position.X = 408.000000000000000000
+    Size.Width = 145.000000000000000000
+    Size.Height = 72.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    object Rectangle1: TRectangle
+      Align = Center
+      Cursor = crHandPoint
+      Fill.Color = xFFC63939
+      Margins.Left = 2.000000000000000000
+      Margins.Right = 2.000000000000000000
+      Size.Width = 141.000000000000000000
+      Size.Height = 40.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Thickness = 0.000000000000000000
+      XRadius = 5.000000000000000000
+      YRadius = 5.000000000000000000
+      OnMouseEnter = Rectangle1MouseEnter
+      OnMouseLeave = Rectangle1MouseLeave
+      object ShadowEffect1: TShadowEffect
+        Distance = 3.000000000000000000
+        Direction = 45.000000000000000000
+        Softness = 0.300000011920929000
+        Opacity = 0.600000023841857900
+        ShadowColor = claBlack
+        Trigger = 'IsMouseOver=true'
+        Enabled = False
+      end
+      object Label1: TLabel
+        Align = Client
+        StyledSettings = []
+        Size.Width = 141.000000000000000000
+        Size.Height = 40.000000000000000000
+        Size.PlatformDefault = False
+        TextSettings.Font.Family = 'Roboto'
+        TextSettings.Font.Size = 14.000000000000000000
+        TextSettings.FontColor = claWhite
+        TextSettings.HorzAlign = Center
+        Text = 'Ajouter Absence'
+        TabOrder = 0
+        object InvertEffect2: TInvertEffect
+          Enabled = False
+        end
+      end
+      object ColorAnimation1: TColorAnimation
+        Duration = 0.200000002980232200
+        PropertyName = 'Fill.Color'
+        StartValue = xFFC63939
+        StopValue = xFF404040
+        Trigger = 'IsMouseOver=true'
+        TriggerInverse = 'IsMouseOver=false'
+      end
+    end
+  end
+end

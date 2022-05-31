@@ -1,0 +1,12 @@
+object Frame2: TFrame2
+  Size.Width = 458.000000000000000000
+  Size.Height = 244.000000000000000000
+  Size.PlatformDefault = False
+  object FrRecherchePopup: TRectangle
+    Align = Client
+    Size.Width = 458.000000000000000000
+    Size.Height = 244.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Thickness = 0.000000000000000000
+  end
+end

@@ -1,0 +1,51 @@
+unit FrFicheDePointage;
+
+interface
+
+uses
+  System.SysUtils, System.Types, System.UITypes, System.Classes, System.Variants, 
+  FMX.Types, FMX.Graphics, FMX.Controls, FMX.Forms, FMX.Dialogs, FMX.StdCtrls,
+  FMX.Objects, FMX.Layouts, FMX.Edit, FMX.Controls.Presentation;
+
+type
+  TficheDePointage = class(TFrame)
+    titreListeEmploye: TRectangle;
+    Label13: TLabel;
+    nomEmploye: TLabel;
+    posteEmploye: TLabel;
+    performanceEmploye: TLabel;
+    identifiant: TLabel;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Rectangle1: TRectangle;
+    photoEmploye: TImage;
+    Label4: TLabel;
+    Rectangle2: TRectangle;
+    CheckBox1: TCheckBox;
+    heureArrive: TRectangle;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Label5: TLabel;
+    Rectangle3: TRectangle;
+    Label6: TLabel;
+    Edit3: TEdit;
+    Edit4: TEdit;
+    CheckBox2: TCheckBox;
+    Rectangle4: TRectangle;
+    Line1: TLine;
+    Line2: TLine;
+    btnConfirme: TLayout;
+    valFdp: TCircle;
+    Label7: TLabel;
+  private
+    { Déclarations privées }
+  public
+    { Déclarations publiques }
+  end;
+
+implementation
+
+{$R *.fmx}
+
+end.
