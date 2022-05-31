@@ -42,9 +42,7 @@ object basesDeDonnees: TbasesDeDonnees
   end
   object FDConnection2: TFDConnection
     Params.Strings = (
-      
-        'Database=C:\Users\hamza\OneDrive\Bureau\Code\Git(s)\Lausha-mdfge' +
-        'stsymp-1c889f5ef518\baseDeDonnees\JOINTURE.db'
+      'Database=C:\mdfgestsymp\baseDeDonnees\JOINTURE.db'
       'DriverID=SQLite')
     LoginPrompt = False
     Transaction = FDTransaction2
