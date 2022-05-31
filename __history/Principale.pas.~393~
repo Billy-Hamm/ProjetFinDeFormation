@@ -9,13 +9,8 @@ uses
   FrNavElement, FMX.Ani, FrEmploye, FrEmployeTopElement, FrEmployeClick,
   FrEvaluationTopElement, FrEvaluation, FrConge, FrCongeTopElement,
   FrCongeAjouter, FrTacheMaquette, FrTacheSurPprincipale, FrTache, FrTopElementInfo,
-<<<<<<< HEAD:__history/Principale.pas.~299~
-  FrEmployeMaquetteFdp;
-=======
-  Accueil, System.Math.Vectors, FMX.Controls3D, FMX.Layers3D, navElement2, FrabsenceTopElement,
-  Checkbox, FrCandidatTopElement, recherchePopupEmp, FrPopUpRech,
-  FrRechCrit, FrInput;
->>>>>>> modifsBillySec:__history/Principale.pas.~375~
+  FrEmployeMaquetteFdp, FrTopElementFichePointage, FrRechMC,
+  FrInput;
 
 type
   TPprincipale = class(TForm)
@@ -70,27 +65,9 @@ type
     Button1: TButton;
     Button2: TButton;
     Label3: TLabel;
-<<<<<<< HEAD:__history/Principale.pas.~299~
-=======
-    Layout3D1: TLayout3D;
-    ShadowEffect1: TShadowEffect;
-    absenceTopElement1: TabsenceTopElement;
-    LayoutPopup: TLayout;
-    Rectangle2: TRectangle;
-    Image1: TImage;
-    input1: Tinput;
-    input2: Tinput;
-    input3: Tinput;
-    Layout1: TLayout;
->>>>>>> modifsBillySec:__history/Principale.pas.~375~
     procedure FormResize(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure menuClick(Sender: TObject);
-    procedure Layout3D1Click(Sender: TObject);
-    procedure rechercheClick(Sender: TObject);
-    procedure Image1Click(Sender: TObject);
-    procedure FormKeyDown(Sender: TObject; var Key: Word; var KeyChar: Char;
-      Shift: TShiftState);
   private
     { Déclarations priv�es }
     var
@@ -103,6 +80,7 @@ type
 
 var
   Pprincipale: TPprincipale;
+  topFdp : TtopElementFdp;
 //  gardeFou : Integer;
 //  tailleEcran : Real;
 //  toggleMenu : Boolean;
@@ -115,10 +93,8 @@ uses varGlobale, FrFiltreMaquetteClickFdp;
 {$R *.XLgXhdpiTb.fmx ANDROID}
 
 
-<<<<<<< HEAD:__history/Principale.pas.~299~
 
-=======
->>>>>>> modifsBillySec:__history/Principale.pas.~375~
+
 
 procedure TPprincipale.FormCreate(Sender: TObject);
 begin
@@ -126,15 +102,11 @@ begin
   tailleEcran := 604;
   toggleMenu := True;
   creeEnsembleElements();
-  label7.Text := inttostr(LayoutPopup.Position);
+//  topFdp := TtopElementFdp.Create(Self);
+//  topFdp.ajoutTempsHeure();
+//  topFdp.Parent := containeTopElement;
 end;
 
-procedure TPprincipale.FormKeyDown(Sender: TObject; var Key: Word;
-  var KeyChar: Char; Shift: TShiftState);
-begin
-  if key = 27 then
-    Pprincipale.LayoutPopup.Visible := false;
-end;
 
 procedure TPprincipale.FormResize(Sender: TObject);
 
@@ -297,15 +269,7 @@ begin
     Pprincipale.Label7.Text := FloatToStr(Pprincipale.Height);
 end;
 
-procedure TPprincipale.Image1Click(Sender: TObject);
-begin
-  LayoutPopup.Visible := false;
-end;
 
-procedure TPprincipale.Layout3D1Click(Sender: TObject);
-begin
-
-end;
 
 // Pour g�rer l'apparition du menu verticale
 procedure TPprincipale.menuClick(Sender: TObject);
@@ -333,14 +297,6 @@ begin
 
 end;
 
-procedure TPprincipale.rechercheClick(Sender: TObject);
-begin
-  LayoutPopup.Visible := true;
-end;
 
-//procedure TPprincipale.rechercheChange(Sender: TObject);
-//begin
-//  recherche.Text:= '';
-//end;
 
 end.

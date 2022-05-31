@@ -68,6 +68,7 @@ type
     procedure FormResize(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure menuClick(Sender: TObject);
+    procedure elementNav1elementNagivationClick(Sender: TObject);
   private
     { Déclarations priv�es }
     var
@@ -95,6 +96,12 @@ uses varGlobale, FrFiltreMaquetteClickFdp;
 
 
 
+
+procedure TPprincipale.elementNav1elementNagivationClick(Sender: TObject);
+begin
+  elementNav1.elementNagivationClick(Sender);
+
+end;
 
 procedure TPprincipale.FormCreate(Sender: TObject);
 begin

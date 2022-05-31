@@ -3,9 +3,10 @@ object basesDeDonnees: TbasesDeDonnees
   Height = 269
   Width = 517
   object ADOConnection1: TADOConnection
+    Connected = True
     ConnectionString = 
       'Provider=SQLOLEDB.1;Integrated Security=SSPI;Persist Security In' +
-      'fo=False;Initial Catalog=essaie;'
+      'fo=False;Initial Catalog=essaie'
     LoginPrompt = False
     Provider = 'SQLOLEDB.1'
     Left = 40
@@ -19,11 +20,8 @@ object basesDeDonnees: TbasesDeDonnees
   end
   object FDConnection1: TFDConnection
     Params.Strings = (
-      
-        'Database=C:\Users\hamza\OneDrive\Bureau\Code\Git(s)\Lausha-mdfge' +
-        'stsymp-1c889f5ef518\baseDeDonnees\symp.db'
+      'Database=C:\mdfgestsymp\baseDeDonnees\symp.db'
       'DriverID=SQLite')
-    Connected = True
     LoginPrompt = False
     Transaction = FDTransaction1
     Left = 32
