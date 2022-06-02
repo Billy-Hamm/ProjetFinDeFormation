@@ -1,6 +1,13 @@
 .txt
-.exe
+*.exe
 Win64/*
 ND/*
 Win32/*
 __history/*
+asset/*
+*.~*
+*.local
+*.identcache
+*.projdata
+*.tvsconfig
+*.dsk
